@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# A sitemap can be added once the business confirms its final domain.

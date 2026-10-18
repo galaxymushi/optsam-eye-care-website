@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Optsam">
+  <circle cx="32" cy="32" r="32" fill="#0a1d26"/>
+  <path d="M10.5 32C18.5 21 45.5 21 53.5 32C45.5 43 18.5 43 10.5 32Z" fill="none" stroke="#7fc4c9" stroke-width="2.6" stroke-linejoin="round"/>
+  <circle cx="32" cy="32" r="8.2" fill="#2c8c94"/>
+  <circle cx="32" cy="32" r="3.6" fill="#0a1d26"/>
+  <circle cx="34.6" cy="29.4" r="1.9" fill="#f7f4ee"/>
+</svg>

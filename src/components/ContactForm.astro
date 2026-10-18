@@ -1,0 +1,540 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<div class="enquiry-wrap">
+  <p class="enquiry__intro">
+    This form composes a message in your own email app or WhatsApp. Nothing is sent from this
+    website, and your details are not stored here.
+  </p>
+
+  <form
+    class="enquiry"
+    data-enquiry
+    action={site.emailHref}
+    method="post"
+    enctype="text/plain"
+    data-email={site.email}
+    data-whatsapp-base={site.whatsappHref}
+    novalidate
+  >
+    <div class="field-row">
+      <div class="field">
+        <label for="name">Your name <span aria-hidden="true">*</span></label>
+        <input id="name" name="name" type="text" autocomplete="name" required data-label="your name" />
+        <p class="field__error" id="name-error" data-error-for="name" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="email">Email address <span aria-hidden="true">*</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" required data-label="your email address" />
+        <p class="field__error" id="email-error" data-error-for="email" hidden></p>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="phone">Phone or WhatsApp <span class="field__optional">(optional)</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" />
+        <p class="field__error" id="phone-error" data-error-for="phone" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="topic">What is this about? <span aria-hidden="true">*</span></label>
+        <div class="select-wrap">
+          <select id="topic" name="topic" required data-label="a topic">
+            <option value="">Please choose</option>
+            <option value="eye-exam">Eye examination</option>
+            <option value="eyewear">Spectacles, lenses or frames</option>
+            <option value="workshop">Workshop repair or adjustment</option>
+            <option value="community">Community programme or partnership</option>
+            <option value="other">Something else</option>
+          </select>
+          <Icon name="chevron-down" size={16} />
+        </div>
+        <p class="field__error" id="topic-error" data-error-for="topic" hidden></p>
+      </div>
+    </div>
+
+    <div class="field field--full">
+      <label for="message">Your message <span aria-hidden="true">*</span></label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        required
+        maxlength="1200"
+        placeholder="A short note about what you need, and any preferred days or times."
+        data-label="a message"
+        aria-describedby="message-hint"></textarea>
+      <p class="field__hint" id="message-hint">Please do not include medical records or sensitive health details. 1,200 characters maximum.</p>
+      <p class="field__error" id="message-error" data-error-for="message" hidden></p>
+    </div>
+
+    <label class="consent">
+      <input type="checkbox" id="consent" name="consent" required data-label="your consent" />
+      <span>
+        I agree that Optsam may use these details to reply to my enquiry. See the
+        <a href="/privacy">privacy note</a>.
+      </span>
+    </label>
+    <p class="field__error" id="consent-error" data-error-for="consent" hidden></p>
+
+    <div class="enquiry__actions">
+      <button class="btn btn--primary" type="submit" data-send-email>
+        <Icon name="mail" size={17} />
+        Continue in email
+      </button>
+      <button class="btn btn--ghost" type="button" data-send-whatsapp>
+        <Icon name="whatsapp" size={17} />
+        Continue in WhatsApp
+      </button>
+    </div>
+
+    <p class="enquiry__fineprint">
+      Your email app or WhatsApp will open with the message ready. You still need to press send
+      there. If nothing opens, copy the message and send it to
+      <a href={site.emailHref}>{site.email}</a>.
+    </p>
+
+    <div class="enquiry__status" role="status" aria-live="polite" data-status hidden></div>
+    <noscript>
+      <p class="enquiry__noscript">
+        This form needs JavaScript to prepare the message. You can still
+        <a href={site.phoneHref}>call {site.phoneDisplay}</a> or
+        <a href={site.emailHref}>email {site.email}</a> directly.
+      </p>
+    </noscript>
+  </form>
+</div>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-enquiry]');
+  const status = document.querySelector<HTMLElement>('[data-status]');
+
+  if (form && status) {
+    const businessEmail = form.dataset.email ?? '';
+    const whatsappBase = form.dataset.whatsappBase ?? '';
+    const whatsappButton = form.querySelector<HTMLButtonElement>('[data-send-whatsapp]');
+    const topic = form.querySelector<HTMLSelectElement>('#topic');
+
+    const topicLabels: Record<string, string> = {
+      'eye-exam': 'Eye examination',
+      eyewear: 'Spectacles, lenses or frames',
+      workshop: 'Workshop repair or adjustment',
+      community: 'Community programme or partnership',
+      other: 'General enquiry',
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const requestedTopic = params.get('topic');
+    if (topic && requestedTopic && Object.hasOwn(topicLabels, requestedTopic)) {
+      (topic as HTMLSelectElement).value = requestedTopic;
+    }
+
+    const errorFor = (name: string) =>
+      form.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
+
+    const setError = (field: HTMLElement, message: string) => {
+      const name = field.getAttribute('name') ?? field.id;
+      const error = errorFor(name);
+      field.setAttribute('aria-invalid', 'true');
+      if (error) {
+        error.textContent = message;
+        error.hidden = false;
+        field.setAttribute('aria-describedby', error.id);
+      }
+    };
+
+    const clearError = (field: HTMLElement) => {
+      const name = field.getAttribute('name') ?? field.id;
+      const error = errorFor(name);
+      field.removeAttribute('aria-invalid');
+      if (error) {
+        error.hidden = true;
+        error.textContent = '';
+      }
+      if (field.id === 'message') field.setAttribute('aria-describedby', 'message-hint');
+    };
+
+    const fields = Array.from(
+      form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+        'input[required], select[required], textarea[required]'
+      )
+    );
+
+    fields.forEach((field) => {
+      field.addEventListener('input', () => clearError(field));
+      field.addEventListener('change', () => clearError(field));
+    });
+
+    const validate = (): boolean => {
+      let firstInvalid: HTMLElement | null = null;
+
+      fields.forEach((field) => {
+        clearError(field);
+        const label = field.dataset.label ?? 'this field';
+        const value = field.value.trim();
+
+        if (field.type === 'checkbox') {
+          if (!(field as HTMLInputElement).checked) {
+            setError(field, 'Please confirm that Optsam may reply to your enquiry.');
+            firstInvalid ??= field;
+          }
+          return;
+        }
+
+        if (!value) {
+          setError(field, `Please add ${label}.`);
+          firstInvalid ??= field;
+          return;
+        }
+
+        if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+          setError(field, 'Please check the email address — it looks incomplete.');
+          firstInvalid ??= field;
+          return;
+        }
+
+        if (field.id === 'phone' && value && !/^[+\d][\d\s()-]{6,}$/.test(value)) {
+          setError(field, 'Please check the phone number, or leave it blank.');
+          firstInvalid ??= field;
+          return;
+        }
+
+        if (field.id === 'message' && value.length < 10) {
+          setError(field, 'Please write a little more, so Optsam can help.');
+          firstInvalid ??= field;
+        }
+      });
+
+      if (firstInvalid) {
+        (firstInvalid as HTMLElement).focus();
+        return false;
+      }
+      return true;
+    };
+
+    const getMessage = () => {
+      const data = new FormData(form);
+      const name = String(data.get('name') ?? '').trim();
+      const email = String(data.get('email') ?? '').trim();
+      const phone = String(data.get('phone') ?? '').trim();
+      const selectedTopic = String(data.get('topic') ?? '');
+      const message = String(data.get('message') ?? '').trim();
+
+      const lines = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        phone ? `Phone/WhatsApp: ${phone}` : null,
+        `Enquiry: ${topicLabels[selectedTopic] ?? 'General enquiry'}`,
+        '',
+        message,
+        '',
+        'Sent from the Optsam website enquiry form.',
+      ].filter((line): line is string => line !== null);
+
+      return {
+        name,
+        email,
+        topicLabel: topicLabels[selectedTopic] ?? 'General enquiry',
+        body: lines.join('\r\n'),
+      };
+    };
+
+    const showStatus = (mode: 'email' | 'whatsapp') => {
+      const { name, topicLabel, body } = getMessage();
+      const subject = `Website enquiry — ${topicLabel} — ${name}`;
+      const mailto = `${businessEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      status.innerHTML = '';
+      const title = document.createElement('p');
+      title.className = 'enquiry__status-title';
+      title.textContent =
+        mode === 'email'
+          ? 'Your email app should open with the message ready.'
+          : 'WhatsApp should open with the message ready.';
+      const text = document.createElement('p');
+      text.textContent =
+        'Nothing has been sent yet. Press send in your email app or WhatsApp. If nothing opened, copy the message below.';
+      status.append(title, text);
+
+      const actions = document.createElement('div');
+      actions.className = 'enquiry__status-actions';
+
+      if (mode === 'email') {
+        const retry = document.createElement('a');
+        retry.className = 'btn btn--sm btn--primary';
+        retry.href = `mailto:${mailto}`;
+        retry.textContent = 'Open email again';
+        actions.append(retry);
+      } else {
+        const retry = document.createElement('a');
+        retry.className = 'btn btn--sm btn--primary';
+        retry.href = `${whatsappBase}?text=${encodeURIComponent(body)}`;
+        retry.target = '_blank';
+        retry.rel = 'noopener';
+        retry.textContent = 'Open WhatsApp again';
+        actions.append(retry);
+      }
+
+      const emailLink = document.createElement('a');
+      emailLink.className = 'btn btn--sm btn--ghost';
+      emailLink.href = `mailto:${mailto}`;
+      emailLink.textContent = `Email ${businessEmail}`;
+      actions.append(emailLink);
+
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.className = 'btn btn--sm btn--ghost';
+      copy.textContent = 'Copy message';
+      copy.addEventListener('click', async () => {
+        const textToCopy = `To: ${businessEmail}\r\nSubject: ${subject}\r\n\r\n${body}`;
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          copy.textContent = 'Copied';
+        } catch {
+          const area = document.createElement('textarea');
+          area.value = textToCopy;
+          area.style.position = 'fixed';
+          area.style.opacity = '0';
+          document.body.append(area);
+          area.select();
+          document.execCommand('copy');
+          area.remove();
+          copy.textContent = 'Copied';
+        }
+        window.setTimeout(() => {
+          copy.textContent = 'Copy message';
+        }, 2600);
+      });
+      actions.append(copy);
+
+      status.append(actions);
+      status.hidden = false;
+
+      window.setTimeout(() => {
+        if (mode === 'email') window.location.href = `mailto:${mailto}`;
+        else window.open(`${whatsappBase}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
+      }, 120);
+    };
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!validate()) {
+        if (status) status.hidden = true;
+        return;
+      }
+      showStatus('email');
+    });
+
+    whatsappButton?.addEventListener('click', () => {
+      if (!validate()) {
+        if (status) status.hidden = true;
+        return;
+      }
+      showStatus('whatsapp');
+    });
+
+  }
+</script>
+
+<style>
+  .enquiry-wrap {
+    max-width: 46rem;
+  }
+
+  .enquiry__intro {
+    max-width: 58ch;
+    margin-bottom: 1.8rem;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .enquiry {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.45rem;
+    align-content: start;
+  }
+
+  .field label,
+  .consent {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .field label span[aria-hidden='true'] {
+    color: var(--teal);
+  }
+
+  .field__optional {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--quiet);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.42);
+    color: var(--text);
+    font-size: 0.92rem;
+    font-weight: 450;
+    transition: border-color 180ms var(--ease), background 180ms var(--ease);
+  }
+
+  .field textarea {
+    min-height: 9rem;
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  .field input:hover,
+  .field select:hover,
+  .field textarea:hover {
+    border-color: var(--teal);
+  }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+    background: #fffdf8;
+  }
+
+  .field [aria-invalid='true'] {
+    border-color: #a33a2b;
+    background: #fdf6f4;
+  }
+
+  .field__error {
+    font-size: 0.74rem;
+    line-height: 1.45;
+    color: #8f2d20;
+  }
+
+  .field__hint {
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+
+  .select-wrap {
+    position: relative;
+  }
+
+  .select-wrap select {
+    appearance: none;
+    padding-right: 2.4rem;
+  }
+
+  .select-wrap svg {
+    position: absolute;
+    right: 0.85rem;
+    top: 50%;
+    translate: 0 -50%;
+    color: var(--muted);
+    pointer-events: none;
+  }
+
+  .consent {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem;
+    align-items: start;
+    max-width: 40rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .consent input {
+    inline-size: 1.05rem;
+    block-size: 1.05rem;
+    margin: 0.15rem 0 0;
+    accent-color: var(--teal);
+  }
+
+  .consent a {
+    color: var(--teal-deep);
+  }
+
+  .enquiry__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .enquiry__fineprint {
+    max-width: 52ch;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: var(--quiet);
+  }
+
+  .enquiry__fineprint a {
+    color: var(--teal-deep);
+  }
+
+  .enquiry__status {
+    padding: 1.15rem 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--teal);
+    background: color-mix(in srgb, var(--paper-2) 72%, transparent);
+  }
+
+  .enquiry__status-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .enquiry__status p {
+    max-width: 60ch;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .enquiry__status-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+
+  .enquiry__noscript {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 680px) {
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

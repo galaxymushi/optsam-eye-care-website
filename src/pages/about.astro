@@ -1,0 +1,512 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import AvailabilityNote from '../components/AvailabilityNote.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+import founder from '../assets/founder-screening.jpg';
+import flyerBrand from '../assets/flyer-brand.jpg';
+
+const timeline = [
+  {
+    year: '2017',
+    title: 'Training, field work — and an idea',
+    text: 'Graduates from the School of Optometry at Kilimanjaro Christian Medical Centre (KCMC), Moshi, after field work at CCBRT in Dar es Salaam. The name Optsam is formed from “Opt” and “Sam”.',
+  },
+  {
+    year: '2018',
+    title: 'Broadening the view',
+    text: 'Works with Diamond Optical Ltd. and takes part in ITV’s “Meza Huru” programme to speak to the public about glaucoma.',
+  },
+  {
+    year: '2019',
+    title: 'A business identity',
+    text: 'Establishes Optsam Eye Care and Optical Workshop Store as the identity through which private optometry services and consultancy are provided.',
+  },
+  {
+    year: '2020',
+    title: 'Into the community',
+    text: 'Eye-health activity with TAG Ukonga Church, retired prison officers in Ukonga and Rotary events. An Integrated People-centred Eye Care screening session at Ukonga is documented.',
+  },
+  {
+    year: '2021',
+    title: 'Consultancy and training',
+    text: 'Works with Tanzanites Lions Club, Aga Khan Polyclinic Tabata and Sokeny Polyclinic Mabibo. Facilitates Snellen-chart training for doctors and nurses with Tindwa Medical and Health Services.',
+  },
+  {
+    year: '2022',
+    title: 'World Sight Day',
+    text: 'Provides a free comprehensive eye screening for teachers and students at Migombani Primary School, Tabata Segerea.',
+  },
+  {
+    year: '2024',
+    title: 'Education in public',
+    text: 'Publishes the documentary script “Kuona ni kuamini / Seeing is believing” and documents a charitable mobile eye clinic at Kilamba Primary School, Mbagala Charambe.',
+  },
+  {
+    year: '2025–26',
+    title: 'A new chapter',
+    text: 'Continues eye-health education through TBC’s “Aridhio” and begins a transition into public-sector optometry, including service at Mchemo District Hospital, Mtwara.',
+  },
+];
+---
+
+<Base
+  title="About"
+  description="The story of Optsam Eye Care and Optical Workshop Store: J.M. Samwel, optometry training at KCMC, community eye care in Dar es Salaam, and the practice's next chapter."
+>
+  <PageHero
+    eyebrow="About Optsam"
+    title="A practice built around <em>sight.</em>"
+    lede="Optsam is the practice identity of J.M. Samwel, a Tanzanian optometrist. Its name joins a profession and a person; its story joins primary eye care with a long record of community work."
+    index="01 / 06"
+  />
+
+  <section class="story section">
+    <div class="wrap">
+      <div class="story__lead">
+        <p class="eyebrow reveal">The name, the idea</p>
+        <h2 class="reveal">Two things,<br /><em>held together.</em></h2>
+        <div class="story__lead-copy reveal" data-delay="1">
+          <p class="lede">
+            “Opt” for Optometrist. “Sam” for Samwel. Optsam began in 2017 as an
+            idea for eye-health outreach, awareness and community service.
+          </p>
+          <p>
+            In 2019 that idea took on a business identity: Optsam Eye Care and
+            Optical Workshop Store. It became the platform through which J.M.
+            Samwel could examine eyesight, prescribe and dispense corrective
+            lenses, and refer people to specialist care when they needed it.
+          </p>
+          <p>
+            The workshop was not an afterthought. Making and fitting spectacles is
+            where clinical understanding meets daily life — the point at which a
+            prescription becomes something a person can actually wear.
+          </p>
+        </div>
+      </div>
+
+      <div class="story__media reveal">
+        <figure>
+          <div class="story__photo figure--frame">
+            <Image
+              src={founder}
+              alt="Optometrist J.M. Samwel leaning over a table to examine a patient during an eye-screening session in Ukonga, Dar es Salaam."
+              widths={[480, 800, 1200]}
+              sizes="(max-width: 900px) 92vw, 58vw"
+              quality={84}
+            />
+          </div>
+          <figcaption>
+            J.M. Samwel during an eye-screening session at Ukonga. The patient’s
+            face is turned away in the photograph. Published by Optsam, 2021.
+          </figcaption>
+        </figure>
+
+        <aside class="story__pull">
+          <p class="story__quote">
+            “What started as an idea to serve communities gradually became a
+            professional journey through private practice, community service,
+            consultancy, public education and, ultimately, public service.”
+          </p>
+          <p class="story__cite">J.M. Samwel — published professional biography, 2026</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder section section--paper2" aria-labelledby="founder-heading">
+    <div class="wrap founder__grid">
+      <div class="founder__heading reveal">
+        <p class="section-index">02 · The founder</p>
+        <h2 id="founder-heading">Samwel John Mushi</h2>
+        <p class="founder__aka">Professionally known as J.M. Samwel</p>
+      </div>
+
+      <div class="founder__body reveal" data-delay="1">
+        <p class="lede">
+          A Tanzanian optometrist who trained at the School of Optometry, KCMC,
+          Moshi, and completed field work at CCBRT in Dar es Salaam in 2017.
+        </p>
+        <p>
+          His professional path has moved between direct patient care, community
+          screening, consultancy inside established clinics, training other health
+          workers and public education. Optsam is the thread that connects them.
+        </p>
+
+        <dl class="founder__facts">
+          <div><dt>Profession</dt><dd>Optometrist</dd></div>
+          <div><dt>Training</dt><dd>School of Optometry, KCMC, Moshi</dd></div>
+          <div><dt>Field work</dt><dd>CCBRT, Dar es Salaam, 2017</dd></div>
+          <div><dt>Business identity</dt><dd>Optsam, established 2019</dd></div>
+        </dl>
+
+        <p class="founder__source">
+          These details are as published in Optsam’s professional biography and
+          Blogger profile. The qualifications have not been independently verified
+          by this website. <a href="/sources">See the verification record.</a>
+        </p>
+      </div>
+
+      <figure class="founder__flyer reveal" data-delay="2">
+        <div class="figure--frame">
+          <Image
+            src={flyerBrand}
+            alt="Optsam’s printed flyer with the round eye logo and the words “Huduma bora za macho”."
+            widths={[380, 600, 800]}
+            sizes="(max-width: 900px) 70vw, 24vw"
+            quality={84}
+          />
+        </div>
+        <figcaption>An original Optsam service flyer, published in 2021.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="timeline section" aria-labelledby="timeline-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">03 · A working history</p>
+          <h2 id="timeline-heading">The journey,<br /><em>year by year.</em></h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          A condensed record drawn from Optsam’s own professional biography and
+          dated posts. It is a history of work, not a list of claims.
+        </p>
+      </div>
+
+      <ol class="timeline__list">
+        {timeline.map((item) => (
+          <li class="reveal">
+            <p class="timeline__year">{item.year}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ol>
+
+      <p class="timeline__source reveal">
+        Source: <a href="https://optsam.blogspot.com/2026/09/professional-biography.html" target="_blank" rel="noopener">Optsam professional biography, 11 September 2026</a>
+        and dated Optsam posts. Some dates refer to the year an activity was
+        documented; they are not presented as a complete employment history.
+      </p>
+    </div>
+  </section>
+
+  <section class="today theme-dark" aria-labelledby="today-heading">
+    <div class="wrap today__grid">
+      <div class="today__heading reveal">
+        <p class="eyebrow">A note on Optsam today</p>
+        <h2 id="today-heading">The chapter<br /><em>has changed.</em></h2>
+      </div>
+      <div class="today__body reveal" data-delay="1">
+        <p class="lede">
+          In September 2026, J.M. Samwel published an official statement explaining
+          that he has transitioned from private practice into public service.
+        </p>
+        <p>
+          He describes Ask Optsam as a personal, non-commercial eye-health
+          education initiative — separate from his government role, and not a
+          substitute for clinical assessment or care. The practice and workshop
+          history described on this site belongs to Optsam’s earlier
+          private-practice chapter.
+        </p>
+        <p>
+          Current service availability is not published online. Please call or
+          email before travelling, and seek appropriate clinical care if you need
+          urgent attention.
+        </p>
+        <a class="link-arrow" href="https://optsam.blogspot.com/2026/09/official-statement-ask-optsam-tanzanian.html" target="_blank" rel="noopener">
+          Read the official statement
+          <Icon name="external" size={15} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap section--tight">
+    <AvailabilityNote />
+  </div>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .story__lead {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .story__lead h2 {
+    margin-top: 1.2rem;
+  }
+
+  .story__lead-copy p + p {
+    margin-top: 1.05rem;
+    max-width: 55ch;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .story__media {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: end;
+  }
+
+  .story__photo {
+    aspect-ratio: 4 / 2.8;
+    overflow: hidden;
+  }
+
+  .story__photo :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .story__pull {
+    border-top: 1px solid var(--line-strong);
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .story__quote {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+    line-height: 1.18;
+    color: var(--ink);
+  }
+
+  .story__cite {
+    margin-top: 1.2rem;
+    font-size: 0.66rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    color: var(--quiet);
+    text-transform: uppercase;
+  }
+
+  /* Founder --------------------------------------------------------------- */
+
+  .founder__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.1fr) minmax(0, 0.55fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .founder__heading h2 {
+    margin-top: 1.1rem;
+    font-size: clamp(2.4rem, 3.8vw, 3.4rem);
+  }
+
+  .founder__aka {
+    margin-top: 0.8rem;
+    font-size: 0.68rem;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .founder__body .lede {
+    font-size: 1.1rem;
+  }
+
+  .founder__body > p + p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 50ch;
+  }
+
+  .founder__facts {
+    margin: 1.8rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .founder__facts div {
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.7rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .founder__facts dt {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    padding-top: 0.2rem;
+  }
+
+  .founder__facts dd {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .founder__source {
+    margin-top: 1.2rem !important;
+    font-size: 0.7rem !important;
+    line-height: 1.6 !important;
+    color: var(--quiet) !important;
+  }
+
+  .founder__source a {
+    color: var(--teal-deep);
+  }
+
+  .founder__flyer .figure--frame {
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+  }
+
+  .founder__flyer :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  /* Timeline -------------------------------------------------------------- */
+
+  .timeline__list {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .timeline__list li {
+    display: grid;
+    grid-template-columns: 7rem minmax(12rem, 0.75fr) minmax(0, 1.3fr);
+    gap: clamp(1rem, 3vw, 3rem);
+    align-items: start;
+    padding-block: clamp(1.2rem, 2.2vw, 1.8rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .timeline__year {
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    line-height: 1;
+    color: var(--teal-deep);
+  }
+
+  .timeline__list h3 {
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
+
+  .timeline__list li > p:last-child {
+    max-width: 58ch;
+    font-size: 0.83rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .timeline__source {
+    margin-top: 1.2rem;
+    max-width: 70ch;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: var(--quiet);
+  }
+
+  .timeline__source a {
+    color: var(--teal-deep);
+  }
+
+  /* Today ----------------------------------------------------------------- */
+
+  .today {
+    padding-block: clamp(4rem, 8vw, 7rem);
+  }
+
+  .today__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .today__heading h2 {
+    margin-top: 1.1rem;
+  }
+
+  .today__body p + p {
+    margin-top: 1rem;
+    max-width: 58ch;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(247, 244, 238, 0.66);
+  }
+
+  .today__body .link-arrow {
+    margin-top: 1.5rem;
+  }
+
+  /* Responsive ------------------------------------------------------------ */
+
+  @media (max-width: 980px) {
+    .story__lead,
+    .story__media,
+    .today__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .story__media {
+      gap: 2rem;
+    }
+
+    .founder__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .founder__heading {
+      grid-column: 1 / -1;
+    }
+
+    .founder__flyer {
+      max-width: 16rem;
+    }
+
+    .timeline__list li {
+      grid-template-columns: 4.5rem minmax(0, 1fr);
+    }
+
+    .timeline__list li > p:last-child {
+      grid-column: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .founder__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .founder__flyer {
+      max-width: 13rem;
+    }
+
+    .timeline__list li {
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+    }
+
+    .timeline__list li > p:last-child {
+      grid-column: auto;
+    }
+  }
+</style>

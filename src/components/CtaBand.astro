@@ -1,0 +1,174 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = 'Let’s look after your sight.',
+  text = 'Call, email or send an enquiry. Optsam will confirm availability and the next suitable step.',
+} = Astro.props;
+---
+
+<section class="cta-band theme-dark">
+  <div class="cta-band__ring" aria-hidden="true"></div>
+  <div class="wrap cta-band__inner">
+    <div class="cta-band__copy">
+      <p class="eyebrow">Appointments &amp; enquiries</p>
+      <h2>{title}</h2>
+      <p class="lede">{text}</p>
+
+      <div class="cta-band__actions">
+        <a class="btn btn--light" href={site.phoneHref}>
+          <Icon name="phone" size={17} />
+          {site.phoneDisplay}
+        </a>
+        <a class="btn btn--outline-light" href="/contact">
+          Send an enquiry
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+      </div>
+    </div>
+
+    <div class="cta-band__aside">
+      <p class="cta-band__label">Visit</p>
+      <p class="cta-band__address">
+        {site.address.street}<br />
+        {site.address.area}<br />
+        {site.address.city}
+      </p>
+      <a class="link-arrow" href={site.directionsHref} target="_blank" rel="noopener">
+        Open in Maps
+        <Icon name="external" size={15} />
+      </a>
+      <p class="cta-band__note">{site.availabilityNote}</p>
+    </div>
+  </div>
+
+  <p class="cta-band__chart" aria-hidden="true">E F P T O Z L P E D</p>
+</section>
+
+<style>
+  .cta-band {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4.5rem, 9vw, 8rem) 0;
+  }
+
+  .cta-band__ring {
+    position: absolute;
+    right: -14vw;
+    top: 50%;
+    translate: 0 -50%;
+    inline-size: min(58vw, 46rem);
+    aspect-ratio: 1;
+    border: 1px solid rgba(167, 211, 214, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cta-band__ring::after {
+    content: '';
+    position: absolute;
+    inset: 9%;
+    border: 1px solid rgba(167, 211, 214, 0.1);
+    border-radius: 50%;
+  }
+
+  .cta-band__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.42fr);
+    gap: clamp(2.5rem, 6vw, 7rem);
+    align-items: end;
+    padding-bottom: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .cta-band h2 {
+    margin-top: 1.25rem;
+    max-width: 14ch;
+  }
+
+  .cta-band .lede {
+    margin-top: 1.3rem;
+    max-width: 46ch;
+  }
+
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.1rem;
+  }
+
+  .cta-band__aside {
+    border-left: 1px solid var(--line-light);
+    padding-left: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .cta-band__label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: var(--brass-light);
+    margin-bottom: 0.9rem;
+  }
+
+  .cta-band__address {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    line-height: 1.15;
+    color: var(--paper);
+  }
+
+  .cta-band__aside .link-arrow {
+    margin-top: 1.15rem;
+  }
+
+  .cta-band__note {
+    margin-top: 1.5rem;
+    max-width: 30ch;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: rgba(247, 244, 238, 0.46);
+  }
+
+  .cta-band__chart {
+    position: relative;
+    z-index: 1;
+    padding-inline: var(--gutter);
+    padding-bottom: 1.1rem;
+    font-size: clamp(0.58rem, 1.2vw, 0.75rem);
+    font-weight: 600;
+    letter-spacing: 0.62em;
+    color: rgba(247, 244, 238, 0.22);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .cta-band__inner {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .cta-band__aside {
+      border-left: 0;
+      border-top: 1px solid var(--line-light);
+      padding-left: 0;
+      padding-top: 1.75rem;
+      max-width: 30rem;
+    }
+
+    .cta-band__ring {
+      right: -30vw;
+      inline-size: 80vw;
+      top: 30%;
+    }
+  }
+</style>

@@ -1,0 +1,522 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { accessed, claimSources, confirmations, imageRecords, unusedSources } from '../data/sources';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Facts & photo credits"
+  description="The source record for Optsam Eye Care's website: where each fact and photograph came from, what remains unverified, and what the owner must confirm before launch."
+>
+  <PageHero
+    eyebrow="Verification record"
+    title="Facts, sources and <em>photo credits.</em>"
+    lede="A website should be judged by what it can support. This page records where the facts came from, what could not be verified, and which permissions are still outstanding."
+    index="06 / 06"
+  />
+
+  <section class="sources-intro section--tight">
+    <div class="wrap sources-intro__grid">
+      <p class="eyebrow">Research standard</p>
+      <p class="sources-intro__statement">
+        Optsam’s own published material is the primary source for this site. Where
+        a claim could not be checked independently, it is described that way.
+      </p>
+      <div class="sources-intro__note">
+        <p>
+          Sources checked on <strong>{accessed}</strong>: the Optsam blog and its
+          post feed, the official Blogger profile, Optsam’s printed service flyers,
+          and the Instagram and YouTube accounts linked from Optsam’s profile.
+        </p>
+        <p>
+          No fact was taken from an unrelated directory, review site or stock
+          image caption. No independent check of professional registration,
+          qualifications, opening hours or current service availability was
+          possible.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="claims section" aria-labelledby="claims-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">01 · Claims</p>
+          <h2 id="claims-heading">What the site says,<br /><em>and why.</em></h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          Each entry records the claim, the exact source, and the limits of
+          verification. A “self-described” status means the source is Optsam
+          itself, not an independent register.
+        </p>
+      </div>
+
+      <ol class="claim-list">
+        {claimSources.map((item, index) => (
+          <li class="claim reveal">
+            <div class="claim__head">
+              <span class="claim__num">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{item.claim}</h3>
+            </div>
+            <div class="claim__body">
+              <p class="claim__detail">{item.detail}</p>
+              <p class="claim__status"><span>Status</span>{item.status}</p>
+              <p class="claim__source">
+                <span>Source</span>
+                <a href={item.source} target="_blank" rel="noopener">
+                  {item.sourceLabel}
+                  <Icon name="external" size={12} />
+                </a>
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="photos section section--paper2" aria-labelledby="photos-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">02 · Photographs</p>
+          <h2 id="photos-heading">Every image,<br /><em>accounted for.</em></h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          No stock photographs, AI-generated people or unrelated images are used.
+          Every photograph below was published by Optsam on its own blog.
+        </p>
+      </div>
+
+      <div class="photo-list">
+        {imageRecords.map((image) => (
+          <article class="photo-record reveal">
+            <div class="photo-record__head">
+              <h3>{image.file}</h3>
+              <p class="photo-record__page">Used on: {image.page}</p>
+            </div>
+            <p class="photo-record__alt"><span>Alt text</span>{image.alt}</p>
+            <p class="photo-record__depicts"><span>Depicts</span>{image.depicts}</p>
+            <div class="photo-record__foot">
+              <p><span>Credit</span>{image.credit}</p>
+              <p><span>Permission</span>{image.permission}</p>
+              <a href={image.source} target="_blank" rel="noopener">
+                Original post
+                <Icon name="external" size={12} />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="photos__note">
+        {unusedSources.map((note) => <p>{note}</p>)}
+        <p>
+          The optimum outcome is written authorisation from Optsam for every image
+          used, plus consent for identifiable patients, pupils and staff. Until that
+          is on file, this site should be treated as an owner review build rather
+          than a public launch.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="confirmations section" aria-labelledby="confirm-heading">
+    <div class="wrap confirmations__grid">
+      <div class="confirmations__head reveal">
+        <p class="section-index">03 · Before launch</p>
+        <h2 id="confirm-heading">Still to be<br /><em>confirmed.</em></h2>
+        <p>
+          These items were either unpublished or could not be verified. They are
+          deliberately absent from the marketing pages rather than guessed.
+        </p>
+      </div>
+      <ol class="confirmations__list reveal" data-delay="1">
+        {confirmations.map((item, index) => (
+          <li>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="omitted section section--paper2" aria-labelledby="omitted-heading">
+    <div class="wrap omitted__grid">
+      <div class="reveal">
+        <p class="eyebrow">What was left out</p>
+        <h2 id="omitted-heading">No invented<br /><em>reassurance.</em></h2>
+      </div>
+      <div class="omitted__body reveal" data-delay="1">
+        <p>This website deliberately does not include:</p>
+        <ul>
+          <li>testimonials, reviews or star ratings;</li>
+          <li>patient numbers, success rates or “years of experience” totals;</li>
+          <li>awards, certifications or professional registrations that were not published;</li>
+          <li>opening hours, prices or a frame inventory;</li>
+          <li>staff names or photographs beyond those published by Optsam;</li>
+          <li>a founder portrait or any image of a person Optsam did not identify;</li>
+          <li>Facebook or TikTok links, because no official account could be verified;</li>
+          <li>claims that Optsam provides emergency or specialist surgical care.</li>
+        </ul>
+        <p class="omitted__note">
+          If you are the owner and can confirm any of these, they can be added
+          accurately — with the supporting detail on this page.
+        </p>
+        <a class="btn btn--primary btn--sm" href={site.emailHref}>
+          <Icon name="mail" size={16} />
+          Send a correction
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sources-intro {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sources-intro__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.38fr) minmax(0, 1fr) minmax(0, 0.6fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .sources-intro__statement {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.5vw, 2.05rem);
+    line-height: 1.18;
+    color: var(--ink);
+    max-width: 30ch;
+  }
+
+  .sources-intro__note {
+    font-size: 0.76rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .sources-intro__note p + p {
+    margin-top: 0.8rem;
+  }
+
+  .sources-intro__note strong {
+    color: var(--ink);
+  }
+
+  /* Claims ---------------------------------------------------------------- */
+
+  .claim-list {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .claim {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    padding-block: clamp(1.4rem, 2.5vw, 2rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .claim__head {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.7rem;
+    align-items: start;
+  }
+
+  .claim__num {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+    padding-top: 0.35rem;
+  }
+
+  .claim h3 {
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    line-height: 1.25;
+  }
+
+  .claim__detail {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .claim__status,
+  .claim__source {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 0.6rem;
+    margin-top: 0.7rem;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .claim__status span,
+  .claim__source span {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    padding-top: 0.1rem;
+  }
+
+  .claim__status {
+    color: var(--teal-deep);
+  }
+
+  .claim__source a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--teal-deep);
+    text-underline-offset: 0.2em;
+  }
+
+  /* Photos ---------------------------------------------------------------- */
+
+  .photo-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .photo-record {
+    padding: 1.25rem 1.5rem 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .photo-record:nth-child(odd) {
+    border-right: 1px solid var(--line);
+    padding-right: 1.5rem;
+  }
+
+  .photo-record:nth-child(even) {
+    padding-left: 1.5rem;
+  }
+
+  .photo-record__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.3rem 1rem;
+  }
+
+  .photo-record h3 {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  .photo-record__page {
+    font-size: 0.6rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  .photo-record__alt,
+  .photo-record__depicts,
+  .photo-record__foot p {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.55rem;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .photo-record__alt span,
+  .photo-record__depicts span,
+  .photo-record__foot span {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    padding-top: 0.15rem;
+  }
+
+  .photo-record__foot {
+    margin-top: 0.7rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--line);
+  }
+
+  .photo-record__foot a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.55rem;
+    margin-left: 4.5rem;
+    font-size: 0.7rem;
+    color: var(--teal-deep);
+  }
+
+  .photos__note {
+    margin-top: 1.5rem;
+    max-width: 76ch;
+  }
+
+  .photos__note p {
+    font-size: 0.72rem;
+    line-height: 1.65;
+    color: var(--quiet);
+  }
+
+  .photos__note p + p {
+    margin-top: 0.6rem;
+  }
+
+  /* Confirmations --------------------------------------------------------- */
+
+  .confirmations__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .confirmations h2 {
+    margin-top: 1rem;
+  }
+
+  .confirmations__head > p:last-child {
+    margin-top: 1.3rem;
+    max-width: 34ch;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .confirmations__list {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .confirmations__list li {
+    display: grid;
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    gap: 0.7rem;
+    padding-block: 0.95rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .confirmations__list span {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--brass);
+    padding-top: 0.25rem;
+  }
+
+  .confirmations__list p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  /* Omitted --------------------------------------------------------------- */
+
+  .omitted__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .omitted h2 {
+    margin-top: 1rem;
+  }
+
+  .omitted__body > p {
+    max-width: 54ch;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .omitted__body ul {
+    margin-block: 1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .omitted__body li {
+    position: relative;
+    padding: 0.5rem 0 0.5rem 1.1rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.82rem;
+    color: var(--text);
+  }
+
+  .omitted__body li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--brass);
+  }
+
+  .omitted__note {
+    font-size: 0.72rem !important;
+    line-height: 1.6 !important;
+    color: var(--quiet) !important;
+  }
+
+  .omitted__body .btn {
+    margin-top: 1.3rem;
+  }
+
+  @media (max-width: 1000px) {
+    .sources-intro__grid {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .claim,
+    .confirmations__grid,
+    .omitted__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-list {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-record:nth-child(odd) {
+      border-right: 0;
+      padding-right: 0;
+    }
+
+    .photo-record:nth-child(even) {
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .photo-record__alt,
+    .photo-record__depicts,
+    .photo-record__foot p {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+
+    .photo-record__foot a {
+      margin-left: 0;
+    }
+  }
+</style>

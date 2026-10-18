@@ -1,0 +1,503 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import ContactForm from '../components/ContactForm.astro';
+import AvailabilityNote from '../components/AvailabilityNote.astro';
+import { site } from '../data/site';
+
+import office from '../assets/office.jpg';
+---
+
+<Base
+  title="Contact"
+  description="Call, email or message Optsam Eye Care in Mbagala, Dar es Salaam. Telephone +255 755 477 225, email optsamtz@gmail.com. Confirm availability before travelling."
+>
+  <PageHero
+    eyebrow="Contact & location"
+    title="Talk to <em>Optsam.</em>"
+    lede="For appointments, frame enquiries or advice about spectacles you already wear, use the channel that suits you. Please confirm availability before travelling."
+    index="05 / 06"
+  />
+
+  <section class="contact section">
+    <div class="wrap contact__grid">
+      <div class="channels">
+        <div class="channel reveal">
+          <p class="channel__label">Call</p>
+          <a class="channel__value" href={site.phoneHref}>{site.phoneDisplay}</a>
+          <p class="channel__note">
+            The number Optsam publishes on its blog and service flyers. Opening
+            hours are not published online — please call ahead.
+          </p>
+        </div>
+
+        <div class="channel reveal">
+          <p class="channel__label">Email</p>
+          <a class="channel__value channel__value--email" href={site.emailHref}>{site.email}</a>
+          <p class="channel__note">{site.emailNote}</p>
+        </div>
+
+        <div class="channel reveal">
+          <p class="channel__label">WhatsApp</p>
+          <a class="channel__value channel__value--small" href={site.whatsappHref} target="_blank" rel="noopener">
+            Message the published number
+            <Icon name="whatsapp" size={18} />
+          </a>
+          <p class="channel__note">{site.whatsappNote}</p>
+        </div>
+
+        <div class="channel reveal">
+          <p class="channel__label">Visit</p>
+          <address class="channel__value channel__value--address">
+            {site.address.street}<br />
+            {site.address.area}<br />
+            {site.address.city}, {site.address.country}
+          </address>
+          <div class="channel__actions">
+            <a class="link-arrow" href={site.directionsHref} target="_blank" rel="noopener">
+              Open in Google Maps
+              <Icon name="external" size={15} />
+            </a>
+            <button class="copy-button" type="button" data-copy-address>
+              <Icon name="copy" size={14} />
+              <span>Copy address</span>
+            </button>
+          </div>
+          <p class="channel__note">
+            No exact building number or map pin is published. If you need
+            directions, call before setting out.
+          </p>
+        </div>
+
+        <div class="channel channel--social reveal">
+          <p class="channel__label">Elsewhere</p>
+          <ul>
+            {site.socials.map((social) => (
+              <li>
+                <a href={social.href} target="_blank" rel="noopener">
+                  {social.label}
+                  <Icon name="external" size={13} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact__form reveal" data-delay="1">
+        <div class="contact__form-head">
+          <p class="eyebrow">Send an enquiry</p>
+          <h2>Tell us what<br /><em>you need.</em></h2>
+        </div>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+
+  <section class="location section section--paper2" aria-labelledby="location-heading">
+    <div class="wrap location__grid">
+      <div class="location__card reveal">
+        <div class="location__ring" aria-hidden="true"></div>
+        <p class="eyebrow">Mbagala · Dar es Salaam</p>
+        <p class="location__area">Mianzini<br />Street</p>
+        <p class="location__address">
+          Optsam Eye Care and Optical Workshop Store<br />
+          Mbagala, Dar es Salaam, Tanzania
+        </p>
+        <a class="btn btn--light" href={site.directionsHref} target="_blank" rel="noopener">
+          Search in Google Maps
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+        <p class="location__note">
+          The map search uses the street and area from Optsam’s flyer. Confirm the
+          exact location by phone before travelling.
+        </p>
+      </div>
+
+      <div class="location__copy">
+        <div class="reveal">
+          <p class="section-index">Finding the practice</p>
+          <h2 id="location-heading">In the heart<br /><em>of Mbagala.</em></h2>
+          <p class="lede">
+            Optsam’s published address is Mianzini Street, Mbagala, in Dar es
+            Salaam. The practice is on the city’s south-eastern side, within the
+            Temeke district.
+          </p>
+          <p>
+            No exact building number or pin has been published, so this site does
+            not invent one. Use the Maps search as a starting point, then call to
+            confirm before you travel.
+          </p>
+        </div>
+
+        <figure class="location__figure reveal" data-delay="1">
+          <div class="figure--frame">
+            <Image
+              src={office}
+              alt="The interior of the Optsam office in Mbagala, with a desk, chairs and framed pictures."
+              widths={[500, 800, 1100]}
+              sizes="(max-width: 900px) 92vw, 46vw"
+              quality={82}
+            />
+          </div>
+          <figcaption>
+            The Optsam office at Mbagala, as published in 2020. This is an archival
+            photograph; current premises and hours should be confirmed by phone.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy-summary section section--tight">
+    <div class="wrap privacy-summary__grid">
+      <div class="reveal">
+        <p class="eyebrow">Your information</p>
+        <h2>A message, <em>not a record.</em></h2>
+      </div>
+      <div class="reveal" data-delay="1">
+        <p>
+          This website does not store enquiries. The form prepares a message in your
+          own email app or WhatsApp; nothing is sent until you press send there.
+          There are no advertising cookies, no analytics and no third-party embeds
+          on this site.
+        </p>
+        <p>
+          Please do not send medical records, test results or other sensitive health
+          details through the form. For anything urgent, go to the nearest hospital
+          or emergency service. Read the <a href="/privacy">privacy note</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap section--tight">
+    <AvailabilityNote />
+  </div>
+</Base>
+
+<script>
+  const copyButton = document.querySelector<HTMLButtonElement>('[data-copy-address]');
+  if (copyButton) {
+    const label = copyButton.querySelector('span');
+    copyButton.addEventListener('click', async () => {
+      const address =
+        'Optsam Eye Care and Optical Workshop Store, Mianzini Street, Mbagala, Dar es Salaam, Tanzania';
+      try {
+        await navigator.clipboard.writeText(address);
+        if (label) label.textContent = 'Copied';
+      } catch {
+        const area = document.createElement('textarea');
+        area.value = address;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.append(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        if (label) label.textContent = 'Copied';
+      }
+      window.setTimeout(() => {
+        if (label) label.textContent = 'Copy address';
+      }, 2500);
+    });
+  }
+</script>
+
+<style>
+  .contact__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: clamp(2.5rem, 7vw, 7rem);
+    align-items: start;
+  }
+
+  .channels {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .channel {
+    padding-block: 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .channel__label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 0.45rem;
+  }
+
+  .channel__value {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    line-height: 1.1;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .channel__value:hover {
+    color: var(--teal-deep);
+  }
+
+  .channel__value--email {
+    font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  }
+
+  .channel__value--small {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 650;
+    color: var(--teal-deep);
+  }
+
+  .channel__value--address {
+    font-style: normal;
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    line-height: 1.25;
+  }
+
+  .channel__note {
+    margin-top: 0.6rem;
+    max-width: 40ch;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--quiet);
+  }
+
+  .channel__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem 1.2rem;
+    margin-top: 0.8rem;
+  }
+
+  .copy-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 0;
+    background: transparent;
+    padding: 0.2rem 0;
+    font-size: 0.7rem;
+    font-weight: 650;
+    color: var(--muted);
+  }
+
+  .copy-button:hover {
+    color: var(--teal-deep);
+  }
+
+  .channel--social ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+  }
+
+  .channel--social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .channel--social a:hover {
+    color: var(--teal-deep);
+  }
+
+  .contact__form-head {
+    margin-bottom: 1.8rem;
+  }
+
+  .contact__form-head h2 {
+    margin-top: 1rem;
+  }
+
+  /* Location -------------------------------------------------------------- */
+
+  .location__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(2.5rem, 7vw, 7rem);
+    align-items: start;
+  }
+
+  .location__card {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(1.75rem, 3.2vw, 2.75rem);
+    min-height: 26rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .location__ring {
+    position: absolute;
+    right: -24%;
+    bottom: -20%;
+    inline-size: 75%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(167, 211, 214, 0.25);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .location__ring::after {
+    content: '';
+    position: absolute;
+    inset: 14%;
+    border: 1px solid rgba(167, 211, 214, 0.14);
+    border-radius: 50%;
+  }
+
+  .location__card .eyebrow {
+    color: var(--teal-light);
+  }
+
+  .location__area {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    padding-top: 3rem;
+    font-family: var(--serif);
+    font-size: clamp(3.3rem, 5.6vw, 5rem);
+    line-height: 0.86;
+    letter-spacing: -0.025em;
+    color: var(--paper);
+  }
+
+  .location__address {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.1rem;
+    font-size: 0.76rem;
+    line-height: 1.6;
+    color: rgba(247, 244, 238, 0.62);
+  }
+
+  .location__card .btn {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.3rem;
+  }
+
+  .location__note {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.1rem;
+    max-width: 34ch;
+    font-size: 0.68rem;
+    line-height: 1.55;
+    color: rgba(247, 244, 238, 0.44);
+  }
+
+  .location__copy h2 {
+    margin-top: 1rem;
+  }
+
+  .location__copy .lede {
+    margin-top: 1.3rem;
+    font-size: 1rem;
+  }
+
+  .location__copy > div > p + p {
+    margin-top: 1rem;
+    max-width: 55ch;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .location__figure {
+    margin-top: 2rem;
+  }
+
+  .location__figure .figure--frame {
+    aspect-ratio: 4 / 2.7;
+    overflow: hidden;
+  }
+
+  .location__figure :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  /* Privacy --------------------------------------------------------------- */
+
+  .privacy-summary {
+    border-top: 1px solid var(--line);
+  }
+
+  .privacy-summary__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .privacy-summary h2 {
+    margin-top: 1rem;
+  }
+
+  .privacy-summary p {
+    max-width: 58ch;
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .privacy-summary p + p {
+    margin-top: 0.9rem;
+  }
+
+  .privacy-summary a {
+    color: var(--teal-deep);
+  }
+
+  @media (max-width: 1020px) {
+    .contact__grid,
+    .location__grid,
+    .privacy-summary__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .channels {
+      position: static;
+    }
+
+    .location__card {
+      min-height: 23rem;
+      max-width: 34rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .location__card {
+      min-height: 21rem;
+      padding: 1.4rem;
+    }
+
+    .location__area {
+      font-size: 3.3rem;
+    }
+
+    .location__figure .figure--frame {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>

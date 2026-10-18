@@ -1,0 +1,398 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Gallery from '../components/Gallery.astro';
+import Icon from '../components/Icon.astro';
+import AvailabilityNote from '../components/AvailabilityNote.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+import workSchool from '../assets/work-school.jpg';
+import workSchoolScreening from '../assets/work-school-screening.jpg';
+import workMobile from '../assets/work-mobile-clinic.jpg';
+import workRotary from '../assets/work-rotary.jpg';
+import workScreening from '../assets/work-screening.jpg';
+
+const gallery = [
+  {
+    image: workSchool,
+    alt: 'Pupils in uniform lined up in a school hall during an eye-health visit.',
+    title: 'World Sight Day at Migombani Primary School',
+    meta: 'Tabata Segerea, Dar es Salaam · 13 October 2022',
+    caption:
+      'Optsam describes providing a free comprehensive eye screening to teachers and students. The post thanks the school, a nurse who assisted with visual-acuity testing, and Aga Khan Polyclinic Tabata staff.',
+    layout: 'wide' as const,
+    source: 'https://optsam.blogspot.com/2022/10/happy-world-sight-day-13th-october-2022.html',
+    sourceLabel: 'Optsam post, 14 October 2022',
+  },
+  {
+    image: workSchoolScreening,
+    alt: 'A group photograph of adults and pupils at Migombani Primary School during a World Sight Day eye-screening visit.',
+    title: 'Teachers, pupils and the screening team',
+    meta: 'Migombani Primary School · 2022',
+    caption:
+      'A group photograph published with the World Sight Day post. People are not named here because the source does not name them.',
+    layout: 'narrow' as const,
+    source: 'https://optsam.blogspot.com/2022/10/happy-world-sight-day-13th-october-2022.html',
+    sourceLabel: 'Optsam post, 14 October 2022',
+  },
+  {
+    image: workMobile,
+    alt: 'A mobile eye-clinic vehicle parked at a school, with pupils gathered outside.',
+    title: 'A mobile eye clinic at Kilamba Primary School',
+    meta: 'Mbagala Charambe · May 2024',
+    caption:
+      'Optsam’s May 2024 post describes a charitable mobile eye-clinic project at Kilamba Primary School. The post speaks of what the project will do; it does not confirm that the service had already been delivered.',
+    layout: 'narrow' as const,
+    source: 'https://optsam.blogspot.com/2024/05/swift-charitable-mobile-eye-clinic-at.html',
+    sourceLabel: 'Optsam post, 21 May 2024',
+  },
+  {
+    image: workRotary,
+    alt: 'A screening room with patients seated and a clinician at a desk.',
+    title: 'Screening at Magereza Hospital, Ukonga',
+    meta: 'Ukonga, Dar es Salaam · February 2021',
+    caption:
+      'A screening session published after the Rotary optometry visit. The source post is dated 23 April 2021 and names the February visit in its title.',
+    layout: 'wide' as const,
+    source: 'https://optsam.blogspot.com/2021/04/rotarian-optsam-at-magereza-hospital.html',
+    sourceLabel: 'Optsam post, 23 April 2021',
+  },
+  {
+    image: workScreening,
+    alt: 'A patient seated at a desk during an eye-screening session.',
+    title: 'A screening in progress',
+    meta: 'Ukonga, Dar es Salaam · 2021',
+    caption:
+      'A patient at a screening desk. The photograph is included because it documents the visit; no diagnosis or outcome is claimed.',
+    layout: 'half' as const,
+    source: 'https://optsam.blogspot.com/2021/04/rotarian-optsam-at-magereza-hospital.html',
+    sourceLabel: 'Optsam post, 23 April 2021',
+  },
+];
+
+const record = [
+  {
+    year: '2020',
+    title: 'Ukonga, community settings',
+    text: 'Optsam documents an Integrated People-centred Eye Care screening at Ukonga, and eye-health activity with TAG Ukonga Church, retired prison officers in Ukonga and Rotary events.',
+  },
+  {
+    year: 'Feb 2021',
+    title: 'Rotary optometry at Magereza Hospital',
+    text: 'A visit by Rotarians who are optometrists at Magereza Hospital, Ukonga. Photographs from the visit were published by Optsam in April 2021.',
+  },
+  {
+    year: 'Jun 2021',
+    title: 'Sokeny Polyclinic, Mabibo',
+    text: 'Optsam publishes a post titled “9th June SOKENY POLYCLINIC Mabibo, Dar es salaam”, with images from the clinic.',
+  },
+  {
+    year: 'Sep 2021',
+    title: 'TMHS Polyclinic, Mikocheni',
+    text: 'A program-based consultancy with TMHS Polyclinic, Mikocheni, is recorded in a September 2021 post.',
+  },
+  {
+    year: 'Oct 2021',
+    title: 'Chang’ombe, Temeke',
+    text: 'Optsam republishes the Tanzanites Lions Club account of a free vision, diabetes and hearing camp at Gwambina Lounge. The club reports that 403 people were screened. Optsam was there; the figure belongs to the club’s account.',
+  },
+  {
+    year: 'Oct 2022',
+    title: 'World Sight Day, Migombani Primary School',
+    text: 'Free comprehensive eye screening for teachers and students at a government school in Tabata Segerea, Dar es Salaam.',
+  },
+  {
+    year: 'May 2024',
+    title: 'Kilamba Primary School, Mbagala Charambe',
+    text: 'Optsam publishes a post about the Swift Charitable Mobile Eye Clinic project, with photographs of the mobile clinic and pupils at the school.',
+  },
+];
+---
+
+<Base
+  title="Our work"
+  description="A documented record of Optsam's community eye-health work in Dar es Salaam, including World Sight Day at Migombani Primary School and screening at Ukonga."
+>
+  <PageHero
+    eyebrow="Our work"
+    title="Care beyond<br /><em>the room.</em>"
+    lede="A documented record of community eye-health activity in Dar es Salaam — in schools, clinics, churches and public camps, from 2020 to 2024."
+    index="04 / 06"
+  />
+
+  <section class="work-intro section--tight">
+    <div class="wrap work-intro__grid">
+      <p class="eyebrow">Kuona ni kuamini</p>
+      <p class="work-intro__statement">
+        Eye care does not only happen in a consulting room. Much of Optsam’s
+        documented work has happened where people already are.
+      </p>
+      <p class="work-intro__note">
+        Every photograph and date below comes from Optsam’s own posts. Where a
+        figure belongs to another organisation, it is attributed to them.
+      </p>
+    </div>
+  </section>
+
+  <section class="work-gallery section" aria-labelledby="gallery-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">The photographic record</p>
+          <h2 id="gallery-heading">Moments<br /><em>in the field.</em></h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          Select a photograph to read the full caption and open the original
+          Optsam post.
+        </p>
+      </div>
+
+      <Gallery items={gallery} />
+    </div>
+  </section>
+
+  <section class="record section section--paper2" aria-labelledby="record-heading">
+    <div class="wrap record__grid">
+      <div class="record__heading reveal">
+        <p class="section-index">A dated record</p>
+        <h2 id="record-heading">Where the work<br /><em>has taken us.</em></h2>
+        <p class="record__note">
+          This is a selection from Optsam’s published record, not a complete list
+          of every activity. Dates are the dates Optsam documented.
+        </p>
+      </div>
+
+      <ol class="record__list">
+        {record.map((item) => (
+          <li class="reveal">
+            <p class="record__year">{item.year}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="careful section">
+    <div class="wrap careful__grid">
+      <div class="reveal">
+        <p class="eyebrow">Reading this record carefully</p>
+        <h2>What this page <em>is — and isn’t.</em></h2>
+      </div>
+      <div class="careful__body reveal" data-delay="1">
+        <p>
+          It is a selection of community activity published by Optsam between 2020
+          and 2024. It is not a client list, a claim of endorsement by any named
+          organisation, or a promise that the same programmes are running today.
+        </p>
+        <p>
+          Some photographs show patients, pupils and staff. They are reproduced from
+          Optsam’s public posts at the owner’s request for this website. Written
+          consent and formal permission should be confirmed before a public launch;
+          the <a href="/sources">sources and photo credits</a> page records the
+          outstanding checks.
+        </p>
+        <div class="careful__note">
+          <p class="careful__note-title">A note on the Chang’ombe figure</p>
+          <p>
+            The figure of 403 people screened is reported by the Tanzanites Lions
+            Club in an account republished by Optsam. It is not presented as an
+            independently audited Optsam statistic.
+          </p>
+        </div>
+        <a class="link-arrow" href="/sources">
+          Open the verification record
+          <Icon name="arrow-right" size={15} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap section--tight">
+    <AvailabilityNote />
+  </div>
+
+  <CtaBand
+    title="Could your school or community be next?"
+    text="For community screening or partnership enquiries, call or email Optsam and explain what you have in mind."
+  />
+</Base>
+
+<style>
+  .work-intro {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .work-intro__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.38fr) minmax(0, 1.1fr) minmax(0, 0.52fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .work-intro__statement {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+    line-height: 1.18;
+    color: var(--ink);
+    max-width: 29ch;
+  }
+
+  .work-intro__note {
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 34ch;
+  }
+
+  /* Record ---------------------------------------------------------------- */
+
+  .record__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .record__heading {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+
+  .record h2 {
+    margin-top: 1.1rem;
+  }
+
+  .record__note {
+    margin-top: 1.4rem;
+    max-width: 32ch;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .record__list {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .record__list li {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(10rem, 0.7fr) minmax(0, 1.2fr);
+    gap: clamp(0.8rem, 2.5vw, 2rem);
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+
+  .record__year {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--teal-deep);
+  }
+
+  .record__list h3 {
+    font-size: 1.13rem;
+    line-height: 1.2;
+  }
+
+  .record__list li > p:last-child {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 55ch;
+  }
+
+  /* Careful --------------------------------------------------------------- */
+
+  .careful__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .careful h2 {
+    margin-top: 1.1rem;
+    max-width: 12ch;
+  }
+
+  .careful__body > p {
+    max-width: 58ch;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .careful__body > p + p {
+    margin-top: 1rem;
+  }
+
+  .careful__body a {
+    color: var(--teal-deep);
+  }
+
+  .careful__note {
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--brass);
+    background: var(--paper-2);
+  }
+
+  .careful__note-title {
+    font-size: 0.68rem !important;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink) !important;
+    margin-bottom: 0.35rem;
+  }
+
+  .careful__note p {
+    max-width: 58ch;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .careful__body .link-arrow {
+    margin-top: 1.4rem;
+  }
+
+  @media (max-width: 1020px) {
+    .work-intro__grid {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .record__grid,
+    .careful__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .record__heading {
+      position: static;
+    }
+
+    .record__list li {
+      grid-template-columns: 5.5rem minmax(0, 1fr);
+    }
+
+    .record__list li > p:last-child {
+      grid-column: 2;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .record__list li {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+
+    .record__list li > p:last-child {
+      grid-column: auto;
+    }
+  }
+</style>

@@ -1,0 +1,1012 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import AvailabilityNote from '../components/AvailabilityNote.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { serviceRows, site } from '../data/site';
+
+import founder from '../assets/founder-screening.jpg';
+import examination from '../assets/examination.jpg';
+import workshopLens from '../assets/workshop-lens.jpg';
+import workshopFrames from '../assets/workshop-frames.jpg';
+import workSchool from '../assets/work-school.jpg';
+import workMobile from '../assets/work-mobile-clinic.jpg';
+import workRotary from '../assets/work-rotary.jpg';
+---
+
+<Base
+  title="Optsam"
+  description="Primary eye care and an optical workshop in Mbagala, Dar es Salaam. Eye examinations, prescription spectacles, contact lenses and referrals, founded by Optometrist J.M. Samwel."
+>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow reveal">Mbagala · Dar es Salaam · Est. 2019</p>
+        <h1 class="reveal" data-delay="1">Clear vision.<br /><em>Better living.</em></h1>
+        <p class="hero__lede reveal" data-delay="2">
+          Primary eye care and an optical workshop in Mbagala — eye examinations,
+          prescription spectacles, and a clear next step for your sight.
+        </p>
+        <div class="hero__actions reveal" data-delay="2">
+          <a class="btn btn--primary" href="/contact">
+            Request an appointment
+            <Icon name="arrow-up-right" size={16} />
+          </a>
+          <a class="btn btn--ghost" href="/services">Explore services</a>
+        </div>
+        <p class="hero__phone reveal" data-delay="3">
+          Prefer to talk?
+          <a href={site.phoneHref}>{site.phoneDisplay}</a>
+        </p>
+        <p class="hero__note reveal" data-delay="3">
+          Opening hours are not published online. Please call or email before
+          travelling to confirm availability.
+        </p>
+      </div>
+
+      <figure class="hero__media reveal" data-delay="1">
+        <div class="hero__ring">
+          <div class="hero__photo">
+            <Image
+              src={founder}
+              alt="Optometrist J.M. Samwel leaning over a table to examine a patient during an eye-screening session in Ukonga, Dar es Salaam."
+              widths={[420, 640, 900, 1200]}
+              sizes="(max-width: 900px) 82vw, 40vw"
+              loading="eager"
+              fetchpriority="high"
+              quality={84}
+            />
+          </div>
+        </div>
+        <span class="hero__vertical" aria-hidden="true">Kuona ni kuamini</span>
+        <figcaption>
+          J.M. Samwel, Optometrist, during a community screening in Ukonga.
+          <a href="/work">See the work</a>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="hero__chart" aria-hidden="true">
+      <span>E</span><span>F</span><span>P</span><span>T</span><span>O</span><span>Z</span>
+      <span>L</span><span>P</span><span>E</span><span>D</span>
+    </div>
+  </section>
+
+  <section class="intro section">
+    <div class="wrap">
+      <div class="intro__grid">
+        <div class="intro__heading reveal">
+          <p class="eyebrow">Optsam · Seeing is believing</p>
+          <h2>Seeing is <em>believing.</em></h2>
+        </div>
+        <div class="intro__body reveal" data-delay="1">
+          <p class="lede">
+            Optsam began in 2017 as an idea: a platform for eye-health outreach,
+            awareness and community service. In 2019 it became the business identity
+            through which J.M. Samwel practised optometry.
+          </p>
+          <p>
+            That practice joins two things that are often separated: the clinical
+            care of an eye examination and the craft of an optical workshop. The
+            aim is simple — understand how you see, explain what can be done, and
+            make the spectacles that follow.
+          </p>
+          <a class="link-arrow" href="/about">
+            Read the Optsam story
+            <Icon name="arrow-right" size={16} />
+          </a>
+        </div>
+      </div>
+
+      <dl class="intro__facts reveal">
+        <div>
+          <dt>2017</dt>
+          <dd>Professional journey begins after optometry training at KCMC and field work at CCBRT.</dd>
+        </div>
+        <div>
+          <dt>2019</dt>
+          <dd>Optsam Eye Care and Optical Workshop Store is established as a business identity.</dd>
+        </div>
+        <div>
+          <dt>2020–24</dt>
+          <dd>Community eye screening documented at schools, clinics and public events in Dar es Salaam.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="services section section--paper2" aria-labelledby="services-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">01 <span>What we do</span></p>
+          <h2 id="services-heading">Primary eye care,<br /><em>end to end.</em></h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          From the first vision test to the finished pair of spectacles — and a
+          referral when specialist care is the right answer.
+        </p>
+      </div>
+
+      <ol class="service-list">
+        {serviceRows.map((service, index) => (
+          <li class="reveal" data-delay={index < 3 ? String(index) : '0'}>
+            <a class="service-row" href={service.href}>
+              <span class="service-row__num">{service.number}</span>
+              <h3>{service.title}</h3>
+              <p>{service.text}</p>
+              <span class="service-row__arrow" aria-hidden="true">
+                <Icon name="arrow-up-right" size={19} />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+
+      <p class="services__note reveal">
+        Services listed here are those Optsam describes in its own materials.
+        Availability can change — please confirm when you enquire.
+      </p>
+    </div>
+  </section>
+
+  <section class="workshop theme-dark" aria-labelledby="workshop-heading">
+    <div class="wrap workshop__grid">
+      <div class="workshop__media reveal">
+        <div class="workshop__main figure--frame">
+          <Image
+            src={workshopLens}
+            alt="A person holding a spectacle lens up to the light at an optical workshop bench."
+            widths={[480, 750]}
+            sizes="(max-width: 900px) 88vw, 36vw"
+            quality={86}
+          />
+        </div>
+        <div class="workshop__small figure--frame">
+          <Image
+            src={workshopFrames}
+            alt="A tray of spectacle frames and lenses on the workshop table."
+            widths={[260, 400]}
+            sizes="(max-width: 900px) 40vw, 14vw"
+            quality={82}
+          />
+        </div>
+        <span class="workshop__stamp" aria-hidden="true">Optical workshop</span>
+      </div>
+
+      <div class="workshop__copy reveal" data-delay="1">
+        <p class="eyebrow">02 · The workshop</p>
+        <h2 id="workshop-heading">Where a prescription becomes <em>something you wear.</em></h2>
+        <p class="lede">
+          Optsam’s optical workshop is where spectacles are made and lenses fitted
+          to frames. It is the practical half of the practice — and the reason a
+          prescription does not stop at a piece of paper.
+        </p>
+
+        <ul class="workshop__list">
+          <li>Prescription spectacles</li>
+          <li>Lens fitting</li>
+          <li>Frames and accessories</li>
+          <li>Contact lenses</li>
+        </ul>
+
+        <a class="btn btn--outline-light" href="/eyewear">
+          Explore eyewear &amp; workshop care
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+        <p class="workshop__note">
+          Frame and lens availability changes. Optsam does not publish an online
+          catalogue or prices — please ask about current options.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="work-preview section" aria-labelledby="work-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">03 <span>Beyond the consulting room</span></p>
+          <h2 id="work-heading">A record of <em>service.</em></h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          Eye care has also happened outside the practice: in schools, clinics and
+          public camps across Dar es Salaam.
+        </p>
+      </div>
+
+      <div class="work-grid">
+        <figure class="work-grid__item work-grid__item--one reveal">
+          <a class="work-grid__link figure--frame" href="/work">
+            <Image
+              src={workSchool}
+              alt="Pupils in uniform lined up in a school hall during an eye-health visit."
+              widths={[600, 900, 1200]}
+              sizes="(max-width: 800px) 100vw, 56vw"
+              quality={84}
+            />
+            <span class="work-grid__tag">Migombani Primary School · 2022</span>
+          </a>
+          <figcaption>World Sight Day free eye screening for teachers and students, Tabata Segerea.</figcaption>
+        </figure>
+
+        <figure class="work-grid__item work-grid__item--two reveal" data-delay="1">
+          <a class="work-grid__link figure--frame" href="/work">
+            <Image
+              src={workMobile}
+              alt="A mobile eye-clinic vehicle parked at a school, with pupils gathered outside."
+              widths={[400, 700, 1000]}
+              sizes="(max-width: 800px) 100vw, 34vw"
+              quality={84}
+            />
+            <span class="work-grid__tag">Kilamba Primary School · 2024</span>
+          </a>
+          <figcaption>A mobile eye clinic at Mbagala Charambe, from Optsam’s published project post.</figcaption>
+        </figure>
+
+        <figure class="work-grid__item work-grid__item--three reveal" data-delay="2">
+          <a class="work-grid__link figure--frame" href="/work">
+            <Image
+              src={workRotary}
+              alt="A screening room with patients seated and a clinician at a desk."
+              widths={[400, 700, 1000]}
+              sizes="(max-width: 800px) 100vw, 34vw"
+              quality={84}
+            />
+            <span class="work-grid__tag">Magereza Hospital · 2021</span>
+          </a>
+          <figcaption>A screening session at Ukonga, published after the Rotary optometry visit.</figcaption>
+        </figure>
+      </div>
+
+      <div class="work-preview__foot reveal">
+        <p>
+          Photographs and details are drawn from Optsam’s own posts. Captions are
+          deliberately specific; see the <a href="/sources">sources and photo credits</a>.
+        </p>
+        <a class="link-arrow" href="/work">
+          See our community work
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="why section section--paper2" aria-labelledby="why-heading">
+    <div class="wrap why__grid">
+      <div class="why__media reveal">
+        <div class="why__photo figure--frame">
+          <Image
+            src={examination}
+            alt="Close view of an optometrist examining a patient’s eye with a handheld instrument."
+            widths={[480, 800, 1100]}
+            sizes="(max-width: 900px) 88vw, 40vw"
+            quality={84}
+          />
+        </div>
+        <p class="why__caption">An eye examination during an Optsam screening session at Ukonga.</p>
+      </div>
+
+      <div class="why__copy">
+        <div class="reveal">
+          <p class="section-index">04 <span>Why Optsam</span></p>
+          <h2 id="why-heading">A practice, not<br /><em>just a counter.</em></h2>
+        </div>
+
+        <ol class="why__list">
+          <li class="reveal" data-delay="1">
+            <span>01</span>
+            <div>
+              <h3>Optometrist-led care</h3>
+              <p>
+                Optsam was founded by J.M. Samwel, an optometrist. The practice
+                examines eyesight, prescribes corrective lenses and refers patients
+                to an ophthalmologist when specialist care is needed.
+              </p>
+            </div>
+          </li>
+          <li class="reveal" data-delay="2">
+            <span>02</span>
+            <div>
+              <h3>Care and craft in one place</h3>
+              <p>
+                The optical workshop makes and fits spectacles. That means the
+                prescription, the lenses and the frame are considered together.
+              </p>
+            </div>
+          </li>
+          <li class="reveal" data-delay="3">
+            <span>03</span>
+            <div>
+              <h3>A documented community record</h3>
+              <p>
+                From Ukonga and Chang’ombe to Migombani Primary School, Optsam’s
+                community eye-care work is documented in its own photographs and posts.
+                <a href="/work">See the record.</a>
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap section--tight">
+    <AvailabilityNote />
+  </div>
+
+  <CtaBand />
+</Base>
+
+<style>
+  /* Hero ------------------------------------------------------------------ */
+
+  .hero {
+    position: relative;
+    padding-top: clamp(2.5rem, 5vw, 4.5rem);
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    min-block-size: min(72vh, 46rem);
+  }
+
+  .hero__copy {
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .hero h1 {
+    margin-top: clamp(1.1rem, 2vw, 1.7rem);
+    font-size: clamp(3.4rem, 7.7vw, 7rem);
+    line-height: 0.9;
+  }
+
+  .hero__lede {
+    margin-top: 1.7rem;
+    max-width: 39ch;
+    font-size: clamp(1.02rem, 1.35vw, 1.2rem);
+    line-height: 1.62;
+    color: var(--muted);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+
+  .hero__phone {
+    margin-top: 1.35rem;
+    font-size: 0.78rem;
+    color: var(--quiet);
+  }
+
+  .hero__phone a {
+    color: var(--ink);
+    font-weight: 650;
+    text-decoration-color: var(--line-strong);
+    margin-left: 0.2rem;
+  }
+
+  .hero__note {
+    max-width: 36ch;
+    margin-top: 0.9rem;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--quiet);
+  }
+
+  .hero__media {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: end;
+    width: min(100%, 34rem);
+    margin: 0;
+  }
+
+  .hero__ring {
+    position: relative;
+    inline-size: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: clamp(0.65rem, 1.2vw, 0.95rem);
+    border: 1px solid var(--line);
+  }
+
+  .hero__ring::before {
+    content: '';
+    position: absolute;
+    inset: -0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .hero__photo {
+    inline-size: 100%;
+    block-size: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--paper-3);
+  }
+
+  .hero__photo :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: 36% 48%;
+  }
+
+  .hero__media figcaption {
+    margin-top: 1.35rem;
+    justify-content: center;
+    text-align: left;
+    max-width: 30rem;
+  }
+
+  .hero__media figcaption a {
+    color: var(--teal-deep);
+    white-space: nowrap;
+  }
+
+  .hero__vertical {
+    position: absolute;
+    right: -2.5rem;
+    top: 50%;
+    translate: 0 -50%;
+    writing-mode: vertical-rl;
+    font-size: 0.57rem;
+    font-weight: 700;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--quiet);
+  }
+
+  .hero__chart {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1.6rem, 5vw, 4.5rem);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-inline: var(--gutter);
+    padding-bottom: 1.3rem;
+    border-bottom: 1px solid var(--line);
+    color: var(--quiet);
+    font-family: var(--sans);
+    font-size: clamp(0.55rem, 1vw, 0.68rem);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+  }
+
+  .hero__chart span:nth-child(1) { font-size: 1.6em; }
+  .hero__chart span:nth-child(2) { font-size: 1.4em; }
+  .hero__chart span:nth-child(3) { font-size: 1.25em; }
+  .hero__chart span:nth-child(4) { font-size: 1.1em; }
+  .hero__chart span:nth-child(5) { font-size: 1em; }
+  .hero__chart span:nth-child(6) { font-size: 0.92em; }
+  .hero__chart span:nth-child(7) { font-size: 0.85em; }
+  .hero__chart span:nth-child(8) { font-size: 0.78em; }
+  .hero__chart span:nth-child(9) { font-size: 0.72em; }
+  .hero__chart span:nth-child(10) { font-size: 0.66em; }
+
+  /* Intro ----------------------------------------------------------------- */
+
+  .intro__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 6vw, 7rem);
+    align-items: start;
+    padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .intro h2 {
+    margin-top: 1.2rem;
+    max-width: 9ch;
+  }
+
+  .intro__body {
+    padding-top: clamp(0.2rem, 1vw, 0.9rem);
+  }
+
+  .intro__body p + p {
+    margin-top: 1.1rem;
+    max-width: 53ch;
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .intro__body .link-arrow {
+    margin-top: 1.4rem;
+  }
+
+  .intro__facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 0;
+  }
+
+  .intro__facts > div {
+    padding: clamp(1.3rem, 2.4vw, 2rem) clamp(1rem, 2vw, 1.8rem);
+    border-left: 1px solid var(--line);
+  }
+
+  .intro__facts > div:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .intro__facts dt {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+    line-height: 1;
+    color: var(--teal-deep);
+  }
+
+  .intro__facts dd {
+    margin: 0.55rem 0 0;
+    max-width: 28ch;
+    font-size: 0.76rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  /* Services -------------------------------------------------------------- */
+
+  .service-list {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 3rem minmax(11rem, 0.72fr) minmax(0, 1.2fr) 2rem;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+    align-items: center;
+    padding-block: clamp(1.35rem, 2.4vw, 2rem);
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 250ms var(--ease), padding 250ms var(--ease);
+  }
+
+  .service-row:hover {
+    background: color-mix(in srgb, var(--paper) 62%, transparent);
+    padding-inline: 0.9rem;
+  }
+
+  .service-row__num {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--brass);
+  }
+
+  .service-row h3 {
+    font-size: clamp(1.45rem, 2.2vw, 2.05rem);
+  }
+
+  .service-row p {
+    font-size: 0.86rem;
+    line-height: 1.62;
+    color: var(--muted);
+    max-width: 50ch;
+  }
+
+  .service-row__arrow {
+    display: grid;
+    place-items: center;
+    inline-size: 2.2rem;
+    block-size: 2.2rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--teal-deep);
+    transition: background 220ms var(--ease), color 220ms var(--ease), border-color 220ms var(--ease);
+  }
+
+  .service-row:hover .service-row__arrow {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--paper);
+  }
+
+  .services__note {
+    margin-top: 1.2rem;
+    max-width: 60ch;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--quiet);
+  }
+
+  /* Workshop -------------------------------------------------------------- */
+
+  .workshop {
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+    overflow: hidden;
+  }
+
+  .workshop__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .workshop__media {
+    position: relative;
+    padding-right: clamp(1rem, 4vw, 3.5rem);
+    padding-bottom: 2rem;
+  }
+
+  .workshop__main {
+    aspect-ratio: 4 / 3.4;
+    overflow: hidden;
+  }
+
+  .workshop__main :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .workshop__small {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    inline-size: clamp(8rem, 15vw, 12rem);
+    aspect-ratio: 1;
+    border: 6px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .workshop__small :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .workshop__stamp {
+    position: absolute;
+    left: -0.6rem;
+    top: 1.4rem;
+    writing-mode: vertical-rl;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 238, 0.46);
+  }
+
+  .workshop__copy h2 {
+    margin-top: 1.2rem;
+    max-width: 14ch;
+  }
+
+  .workshop__copy .lede {
+    margin-top: 1.4rem;
+    font-size: 0.98rem;
+    max-width: 48ch;
+  }
+
+  .workshop__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block: 1.7rem;
+  }
+
+  .workshop__list li {
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--line-light);
+    border-radius: 999px;
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    color: rgba(247, 244, 238, 0.72);
+  }
+
+  .workshop__note {
+    margin-top: 1.15rem;
+    max-width: 44ch;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: rgba(247, 244, 238, 0.46);
+  }
+
+  /* Work preview ---------------------------------------------------------- */
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+
+  .work-grid__item {
+    margin: 0;
+  }
+
+  .work-grid__item--one {
+    grid-column: span 7;
+    grid-row: span 2;
+  }
+
+  .work-grid__item--two,
+  .work-grid__item--three {
+    grid-column: span 5;
+  }
+
+  .work-grid__link {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: var(--paper-3);
+  }
+
+  .work-grid__item--one .work-grid__link {
+    aspect-ratio: 4 / 4.4;
+  }
+
+  .work-grid__item--two .work-grid__link,
+  .work-grid__item--three .work-grid__link {
+    aspect-ratio: 4 / 2.25;
+  }
+
+  .work-grid__link :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    transition: transform 900ms var(--ease);
+  }
+
+  .work-grid__link:hover :global(img) {
+    transform: scale(1.025);
+  }
+
+  .work-grid__tag {
+    position: absolute;
+    left: 0.8rem;
+    bottom: 0.8rem;
+    padding: 0.35rem 0.6rem;
+    background: rgba(10, 29, 38, 0.78);
+    color: var(--paper);
+    font-size: 0.6rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+  }
+
+  .work-grid figcaption {
+    max-width: 44ch;
+    font-size: 0.74rem;
+  }
+
+  .work-preview__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .work-preview__foot p {
+    max-width: 58ch;
+    font-size: 0.74rem;
+    line-height: 1.6;
+    color: var(--quiet);
+  }
+
+  .work-preview__foot a {
+    color: var(--teal-deep);
+  }
+
+  /* Why ------------------------------------------------------------------- */
+
+  .why__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .why__photo {
+    aspect-ratio: 4 / 4.6;
+    overflow: hidden;
+  }
+
+  .why__photo :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: 45% center;
+  }
+
+  .why__caption {
+    margin-top: 0.8rem;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+
+  .why__copy h2 {
+    margin-top: 1.1rem;
+    max-width: 12ch;
+  }
+
+  .why__list {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .why__list li {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0.8rem;
+    padding-block: 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .why__list li > span {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+    padding-top: 0.35rem;
+  }
+
+  .why__list h3 {
+    font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  }
+
+  .why__list p {
+    margin-top: 0.35rem;
+    max-width: 54ch;
+    font-size: 0.83rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .why__list a {
+    color: var(--teal-deep);
+  }
+
+  /* Motion ---------------------------------------------------------------- */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .js .hero__photo :global(img) {
+      animation: hero-focus 1.6s var(--ease) both;
+    }
+
+    @keyframes hero-focus {
+      from {
+        transform: scale(1.06);
+        filter: saturate(0.8);
+      }
+      to {
+        transform: scale(1);
+        filter: saturate(1);
+      }
+    }
+  }
+
+  /* Responsive ------------------------------------------------------------ */
+
+  @media (max-width: 980px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+      min-block-size: 0;
+      gap: 2.5rem;
+    }
+
+    .hero__copy {
+      padding-bottom: 0;
+    }
+
+    .hero__media {
+      justify-self: center;
+      width: min(82vw, 30rem);
+    }
+
+    .hero__vertical {
+      display: none;
+    }
+
+    .intro__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .intro h2 {
+      max-width: none;
+    }
+
+    .workshop__grid,
+    .why__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .workshop__media {
+      max-width: 34rem;
+    }
+
+    .why__photo {
+      aspect-ratio: 4 / 3.4;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero h1 {
+      font-size: clamp(3.1rem, 12.5vw, 4.4rem);
+    }
+
+    .hero__chart {
+      gap: 1.3rem;
+      margin-top: 2.4rem;
+    }
+
+    .intro__facts {
+      grid-template-columns: 1fr;
+    }
+
+    .intro__facts > div {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+      padding-inline: 0;
+    }
+
+    .intro__facts > div:first-child {
+      border-top: 0;
+    }
+
+    .service-row {
+      grid-template-columns: 2rem minmax(0, 1fr) 1.9rem;
+      gap: 0.8rem;
+      align-items: start;
+    }
+
+    .service-row p {
+      grid-column: 2 / -1;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .service-row h3 {
+      font-size: 1.45rem;
+    }
+
+    .service-row__arrow {
+      inline-size: 1.9rem;
+      block-size: 1.9rem;
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .work-grid__item--one,
+    .work-grid__item--two,
+    .work-grid__item--three {
+      grid-column: span 12;
+      grid-row: auto;
+    }
+
+    .work-grid__item--one .work-grid__link,
+    .work-grid__item--two .work-grid__link,
+    .work-grid__item--three .work-grid__link {
+      aspect-ratio: 4 / 3;
+    }
+
+    .workshop__small {
+      inline-size: 7rem;
+    }
+  }
+</style>

@@ -1,0 +1,559 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Gallery from '../components/Gallery.astro';
+import AvailabilityNote from '../components/AvailabilityNote.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+import workshopBench from '../assets/workshop-bench.jpg';
+import workshopFrames from '../assets/workshop-frames.jpg';
+import workshopTools from '../assets/workshop-tools.jpg';
+import workshopLens from '../assets/workshop-lens.jpg';
+import flyerServices from '../assets/flyer-services.jpg';
+
+const categories = [
+  {
+    title: 'Prescription spectacles',
+    text: 'Spectacles made to your prescription, with lenses fitted to the frame you choose.',
+  },
+  {
+    title: 'Lenses',
+    text: 'Optsam’s published list includes therapeutic and cosmetic lenses. Ask which lens types are currently available.',
+  },
+  {
+    title: 'Frames',
+    text: 'Optsam lists branded frames among its products. The website does not publish a catalogue or current stock.',
+  },
+  {
+    title: 'Contact lenses',
+    text: 'Contact-lens fitting and supply, including the lens types Optsam lists as available.',
+  },
+  {
+    title: 'Optical accessories',
+    text: 'Accessories are listed by Optsam. Ask what is in stock when you enquire.',
+  },
+];
+
+const gallery = [
+  {
+    image: workshopBench,
+    alt: 'Two people working together at a bench in the Optsam optical workshop.',
+    title: 'At the workshop bench',
+    meta: 'Optsam optical workshop · 2021',
+    caption:
+      'Work at the bench, where frames and lenses are handled. Published in Optsam’s workshop post.',
+    layout: 'half' as const,
+    source: 'https://optsam.blogspot.com/2021/04/optsam-optical-workshop-store.html',
+    sourceLabel: 'Original post',
+  },
+  {
+    image: workshopFrames,
+    alt: 'A tray of spectacle frames and lenses on the workshop table.',
+    title: 'Frames and lenses',
+    meta: 'Optsam optical workshop · 2021',
+    caption:
+      'A tray of frames at the workshop. Styles and stock are not published online, and availability changes.',
+    layout: 'half' as const,
+    source: 'https://optsam.blogspot.com/2021/04/optsam-optical-workshop-store.html',
+    sourceLabel: 'Original post',
+  },
+  {
+    image: workshopTools,
+    alt: 'Hands fitting a pair of spectacles at the Optsam workshop.',
+    title: 'Fitting a pair',
+    meta: 'Optsam optical workshop · 2021',
+    caption:
+      'Hands at work on a frame. The workshop makes and fits spectacles; ask about current turnaround when you enquire.',
+    layout: 'wide' as const,
+    source: 'https://optsam.blogspot.com/2021/04/optsam-optical-workshop-store.html',
+    sourceLabel: 'Original post',
+  },
+  {
+    image: workshopLens,
+    alt: 'A person holding a spectacle lens up to the light at an optical workshop bench.',
+    title: 'Lens handling',
+    meta: 'Optsam optical workshop · 2021',
+    caption:
+      'A lens held up to the light at the workshop bench. A reminder that the prescription is only the beginning.',
+    layout: 'narrow' as const,
+    source: 'https://optsam.blogspot.com/2021/04/optsam-optical-workshop-store.html',
+    sourceLabel: 'Original post',
+  },
+];
+---
+
+<Base
+  title="Eyewear & workshop"
+  description="Prescription spectacles, lenses, frames, contact lenses and optical workshop care at Optsam in Mbagala, Dar es Salaam. No invented catalogue or prices."
+>
+  <PageHero
+    eyebrow="Optical products"
+    title="Frames, lenses and <em>workshop care.</em>"
+    lede="Optsam’s optical workshop is where a prescription becomes a pair of spectacles: lenses fitted to frames, and frames chosen for the person wearing them."
+    index="03 / 06"
+  />
+
+  <section class="eyewear-intro section">
+    <div class="wrap eyewear-intro__grid">
+      <div class="eyewear-intro__heading reveal">
+        <p class="eyebrow">Inside the workshop</p>
+        <h2>Made to be<br /><em>worn.</em></h2>
+      </div>
+      <div class="eyewear-intro__body reveal" data-delay="1">
+        <p class="lede">
+          A good pair of spectacles is not just a prescription in a frame. It is a
+          set of measurements, a choice of lens, a frame that sits properly — and
+          the workshop work that brings them together.
+        </p>
+        <p>
+          Optsam describes an optical workshop for making spectacles and fitting
+          lenses. That workshop sits alongside the eye examination, so the clinical
+          decision and the practical result are part of the same practice.
+        </p>
+        <p>
+          The website does not publish a frame catalogue, stock list or prices.
+          Those details change, and guessing would not help you. Ask when you
+          enquire and Optsam can tell you what is currently available.
+        </p>
+        <a class="btn btn--primary btn--sm" href="/contact?topic=eyewear">
+          Ask about eyewear
+          <Icon name="arrow-up-right" size={15} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="eyewear-band" aria-label="Optical workshop">
+    <div class="wrap">
+      <figure class="reveal">
+        <div class="eyewear-band__image figure--frame">
+          <Image
+            src={workshopFrames}
+            alt="A tray of spectacle frames and lenses on the workshop table."
+            widths={[800, 1200, 1600]}
+            sizes="100vw"
+            quality={84}
+          />
+          <span class="eyewear-band__label">Optical workshop · Mbagala</span>
+        </div>
+        <figcaption>
+          Frames and lenses at the Optsam workshop. Photograph published by Optsam
+          in 2021; current stock is not represented here.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="categories section" aria-labelledby="categories-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">What Optsam lists</p>
+          <h2 id="categories-heading">The optical<br /><em>range.</em></h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          These categories come from Optsam’s own published service list. They are
+          not a live inventory, and no prices are shown because none are published.
+        </p>
+      </div>
+
+      <ul class="category-list">
+        {categories.map((category, index) => (
+          <li class="reveal" data-delay={String(Math.min(index, 3))}>
+            <span class="category-list__num">{String(index + 1).padStart(2, '0')}</span>
+            <h3>{category.title}</h3>
+            <p>{category.text}</p>
+            <a href="/contact?topic=eyewear" aria-label={`Ask about ${category.title.toLowerCase()}`}>
+              Ask
+              <Icon name="arrow-up-right" size={14} />
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="categories__note reveal">
+        <p>
+          <strong>A note on product photographs.</strong> The images on this page
+          show the workshop at work. They are not a catalogue, and they do not
+          represent current frames, lenses or stock. No stock photograph has been
+          used to imply an Optsam product.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section section section--paper2" aria-labelledby="gallery-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">The workshop, in pictures</p>
+          <h2 id="gallery-heading">A closer look.</h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          Photographs published by Optsam from its optical workshop. Select an image
+          to view it larger.
+        </p>
+      </div>
+
+      <Gallery items={gallery} />
+    </div>
+  </section>
+
+  <section class="fitting section" aria-labelledby="fitting-heading">
+    <div class="wrap fitting__grid">
+      <div class="fitting__heading reveal">
+        <p class="section-index">From prescription to fitting</p>
+        <h2 id="fitting-heading">Three practical<br /><em>stages.</em></h2>
+        <p class="fitting__note">
+          The exact process depends on your prescription and the options available.
+          Confirm the details when you enquire.
+        </p>
+      </div>
+
+      <ol class="fitting__steps">
+        <li class="reveal">
+          <span>01</span>
+          <h3>The prescription</h3>
+          <p>
+            Your eye examination establishes what correction you need. Bring any
+            current spectacles or previous prescription with you.
+          </p>
+        </li>
+        <li class="reveal" data-delay="1">
+          <span>02</span>
+          <h3>The frame and lens</h3>
+          <p>
+            Discuss the frame and lens options currently available. The choice is
+            about fit, comfort and how you use your eyes — not just appearance.
+          </p>
+        </li>
+        <li class="reveal" data-delay="2">
+          <span>03</span>
+          <h3>The fitting</h3>
+          <p>
+            The workshop makes and fits the spectacles. Ask about turnaround and
+            what to do if the fit needs attention afterwards.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="archive section section--tight">
+    <div class="wrap archive__grid">
+      <figure class="archive__figure reveal">
+        <div class="figure--frame">
+          <Image
+            src={flyerServices}
+            alt="Optsam’s printed service flyer showing an optical instrument, the Optsam logo and contact details."
+            widths={[400, 650, 900]}
+            sizes="(max-width: 760px) 80vw, 30vw"
+            quality={84}
+          />
+        </div>
+        <figcaption>
+          An original Optsam service flyer listing eye testing, appointment
+          scheduling, the optical workshop and referral. Published 2021.
+        </figcaption>
+      </figure>
+
+      <div class="archive__copy reveal" data-delay="1">
+        <p class="eyebrow">Archival record</p>
+        <h2>The original list, <em>unchanged.</em></h2>
+        <p>
+          The 2021 flyer is not a current price list, and it is not a guarantee that
+          every item is available today. It is included because it is Optsam’s own
+          record of what the practice set out to offer.
+        </p>
+        <p>
+          Where the website lists a service or product, it is because Optsam
+          published it. Where the information could not be verified, it has been
+          left out and noted for the owner.
+        </p>
+        <a class="link-arrow" href="/sources">
+          Facts &amp; photo credits
+          <Icon name="arrow-right" size={15} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap section--tight">
+    <AvailabilityNote />
+  </div>
+
+  <CtaBand
+    title="Looking for the right pair?"
+    text="Tell Optsam what you need — an eye examination, a new prescription, or advice on spectacles you already wear."
+  />
+</Base>
+
+<style>
+  .eyewear-intro__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .eyewear-intro h2 {
+    margin-top: 1.2rem;
+  }
+
+  .eyewear-intro__body > p {
+    max-width: 57ch;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .eyewear-intro__body > p + p {
+    margin-top: 1rem;
+  }
+
+  .eyewear-intro__body .btn {
+    margin-top: 1.5rem;
+  }
+
+  .eyewear-band {
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .eyewear-band__image {
+    position: relative;
+    aspect-ratio: 16 / 6.4;
+    overflow: hidden;
+  }
+
+  .eyewear-band__image :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+  }
+
+  .eyewear-band__label {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    padding: 0.4rem 0.7rem;
+    background: rgba(10, 29, 38, 0.78);
+    color: var(--paper);
+    font-size: 0.6rem;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Categories ------------------------------------------------------------ */
+
+  .category-list {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .category-list li {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(11rem, 0.6fr) minmax(0, 1.2fr) 2rem;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+    align-items: center;
+    padding-block: 1.35rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .category-list__num {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+  }
+
+  .category-list h3 {
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+  }
+
+  .category-list p {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 52ch;
+  }
+
+  .category-list a {
+    display: grid;
+    place-items: center;
+    inline-size: 2rem;
+    block-size: 2rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--teal-deep);
+    text-decoration: none;
+    transition: background 200ms var(--ease), color 200ms var(--ease);
+  }
+
+  .category-list a:hover {
+    background: var(--teal);
+    color: var(--paper);
+  }
+
+  .categories__note {
+    margin-top: 1.5rem;
+    max-width: 66ch;
+  }
+
+  .categories__note p {
+    font-size: 0.74rem;
+    line-height: 1.65;
+    color: var(--quiet);
+  }
+
+  .categories__note strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  /* Fitting --------------------------------------------------------------- */
+
+  .fitting__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .fitting h2 {
+    margin-top: 1.1rem;
+  }
+
+  .fitting__note {
+    margin-top: 1.4rem;
+    max-width: 31ch;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .fitting__steps {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .fitting__steps li {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(9rem, 0.5fr) minmax(0, 1fr);
+    gap: clamp(0.8rem, 2vw, 2rem);
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+
+  .fitting__steps span {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+    padding-top: 0.4rem;
+  }
+
+  .fitting__steps h3 {
+    font-size: 1.45rem;
+  }
+
+  .fitting__steps p {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 50ch;
+  }
+
+  /* Archive --------------------------------------------------------------- */
+
+  .archive {
+    background: var(--paper-2);
+  }
+
+  .archive__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .archive__figure {
+    max-width: 22rem;
+  }
+
+  .archive__figure .figure--frame {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  .archive__figure :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .archive__copy h2 {
+    margin-top: 1rem;
+    max-width: 14ch;
+  }
+
+  .archive__copy p {
+    margin-top: 1rem;
+    max-width: 55ch;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .archive__copy .link-arrow {
+    margin-top: 1.4rem;
+  }
+
+  /* Responsive ------------------------------------------------------------ */
+
+  @media (max-width: 900px) {
+    .eyewear-intro__grid,
+    .fitting__grid,
+    .archive__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .eyewear-band__image {
+      aspect-ratio: 4 / 3;
+    }
+
+    .category-list li {
+      grid-template-columns: 2rem minmax(0, 1fr) 1.9rem;
+      align-items: start;
+    }
+
+    .category-list p {
+      grid-column: 2 / -1;
+      margin-top: 0.3rem;
+    }
+
+    .category-list a {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .archive__figure {
+      max-width: 18rem;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .fitting__steps li {
+      grid-template-columns: 2rem minmax(0, 1fr);
+    }
+
+    .fitting__steps p {
+      grid-column: 2;
+      margin-top: 0.2rem;
+    }
+  }
+</style>

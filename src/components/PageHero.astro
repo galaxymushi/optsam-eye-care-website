@@ -1,0 +1,78 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede: string;
+  index?: string;
+}
+
+const { eyebrow, title, lede, index } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="page-hero__meta">
+      <p class="eyebrow">{eyebrow}</p>
+      {index && <p class="page-hero__index">{index}</p>}
+    </div>
+    <div class="page-hero__grid">
+      <h1 set:html={title} />
+      <p class="lede">{lede}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-block: clamp(3.25rem, 7vw, 6.5rem) clamp(2.75rem, 5vw, 4.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .page-hero__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: clamp(2rem, 4vw, 3.25rem);
+  }
+
+  .page-hero__index {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--quiet);
+    text-transform: uppercase;
+  }
+
+  .page-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+  }
+
+  .page-hero h1 {
+    max-width: 16ch;
+  }
+
+  .page-hero .lede {
+    padding-bottom: 0.4rem;
+    max-width: 38ch;
+  }
+
+  @media (max-width: 860px) {
+    .page-hero__grid {
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+      align-items: start;
+    }
+
+    .page-hero h1 {
+      max-width: none;
+    }
+
+    .page-hero .lede {
+      max-width: 52ch;
+    }
+  }
+</style>

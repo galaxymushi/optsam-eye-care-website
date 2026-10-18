@@ -1,0 +1,79 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<div class:list={['availability', { 'availability--compact': compact }]}>
+  <span class="availability__mark" aria-hidden="true">i</span>
+  <div>
+    <h2 class="availability__title">Before you travel</h2>
+    <p>
+      {site.availabilityNote}
+      <a href="/contact">See contact details <Icon name="arrow-right" size={13} /></a>
+    </p>
+  </div>
+</div>
+
+<style>
+  .availability {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding-block: 1.4rem;
+  }
+
+  .availability--compact {
+    border: 0;
+    padding-block: 0;
+  }
+
+  .availability__mark {
+    display: grid;
+    place-items: center;
+    inline-size: 1.6rem;
+    block-size: 1.6rem;
+    border: 1px solid var(--brass);
+    border-radius: 50%;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--brass);
+    margin-top: 0.1rem;
+  }
+
+  .availability__title {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .availability p {
+    max-width: 72ch;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .availability a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--teal-deep);
+    white-space: nowrap;
+    text-decoration-color: color-mix(in srgb, var(--teal) 40%, transparent);
+  }
+</style>

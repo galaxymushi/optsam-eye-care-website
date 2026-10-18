@@ -1,0 +1,843 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import AvailabilityNote from '../components/AvailabilityNote.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+import examination from '../assets/examination.jpg';
+import workshopLens from '../assets/workshop-lens.jpg';
+
+const contents = [
+  { id: 'examinations', label: 'Eye examinations' },
+  { id: 'spectacles', label: 'Prescription spectacles' },
+  { id: 'workshop', label: 'Optical workshop' },
+  { id: 'contact-lenses', label: 'Contact lenses' },
+  { id: 'referral', label: 'Referral & eye health' },
+  { id: 'guidance', label: 'Eye-health guidance' },
+];
+---
+
+<Base
+  title="Eye care services"
+  description="Eye examinations, prescription spectacles, optical workshop services, contact lenses and specialist referral at Optsam in Mbagala, Dar es Salaam."
+>
+  <PageHero
+    eyebrow="Eye care services"
+    title="Eye care,<br /><em>clearly explained.</em>"
+    lede="What Optsam does, what to expect, and how to tell when a problem should not wait. The services below are limited to those Optsam describes in its own materials."
+    index="02 / 06"
+  />
+
+  <section class="service-intro section--tight">
+    <div class="wrap service-intro__inner">
+      <p class="eyebrow">Primary eye care</p>
+      <p class="service-intro__statement">
+        Optsam describes its role as <em>examining eyesight, dispensing and
+        prescribing corrective lenses, identifying and managing eye conditions,
+        and referring patients to specialists.</em>
+      </p>
+      <p class="service-intro__note">
+        The practice also runs an optical workshop for making and fitting
+        spectacles. Availability of specific tests, lenses and frames can change;
+        please confirm when you enquire.
+      </p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="service-layout">
+      <aside class="service-nav" aria-label="On this page">
+        <p class="service-nav__label">On this page</p>
+        <ul>
+          {contents.map((item, index) => (
+            <li>
+              <a href={`#${item.id}`} data-scrollspy>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a class="service-nav__cta" href="/contact">
+          Request an appointment
+          <Icon name="arrow-up-right" size={15} />
+        </a>
+      </aside>
+
+      <div class="service-content">
+        <article class="service-block" id="examinations">
+          <div class="service-block__head">
+            <p class="service-block__num">01</p>
+            <h2>Eye examinations</h2>
+          </div>
+          <div class="service-block__body">
+            <p class="lede">
+              An eye examination is more than reading letters on a chart. It is a
+              chance to understand how your eyes are working, how well you see at
+              different distances, and whether anything needs attention.
+            </p>
+            <p>
+              Eyesight examination is the core of Optsam’s primary eye care. The
+              practice describes assessing vision, prescribing corrective lenses,
+              identifying eye conditions and referring patients to an
+              ophthalmologist when specialist care is needed.
+            </p>
+            <p>
+              The exact tests and equipment used at your visit may vary. Ask when
+              you arrange your appointment, and mention any changes in your vision
+              or any eye symptoms you have noticed.
+            </p>
+            <div class="service-block__actions">
+              <a class="btn btn--primary btn--sm" href="/contact?topic=eye-exam">
+                Enquire about an examination
+                <Icon name="arrow-up-right" size={15} />
+              </a>
+              <a class="link-arrow" href="/work">See community screening work <Icon name="arrow-right" size={15} /></a>
+            </div>
+          </div>
+          <figure class="service-block__figure">
+            <div class="figure--frame">
+              <Image
+                src={examination}
+                alt="Close view of an optometrist examining a patient’s eye with a handheld instrument."
+                widths={[420, 700, 1000]}
+                sizes="(max-width: 900px) 92vw, 34vw"
+                quality={84}
+              />
+            </div>
+            <figcaption>An eye examination at an Optsam screening session in Ukonga.</figcaption>
+          </figure>
+        </article>
+
+        <article class="service-block" id="spectacles">
+          <div class="service-block__head">
+            <p class="service-block__num">02</p>
+            <h2>Prescription spectacles</h2>
+          </div>
+          <div class="service-block__body">
+            <p class="lede">
+              A prescription is only half the work. The frame has to fit your face,
+              the lenses have to suit how you use your eyes, and the finished pair
+              has to be comfortable enough to wear.
+            </p>
+            <p>
+              Optsam prescribes and dispenses corrective lenses. Its optical
+              workshop makes and fits spectacles, so the prescription, lenses and
+              frame are considered together rather than in separate visits.
+            </p>
+            <p>
+              If you already wear spectacles, bring them with you, along with any
+              previous prescription you have. Ask about the lens and frame options
+              currently available before you choose.
+            </p>
+            <div class="service-block__actions">
+              <a class="btn btn--primary btn--sm" href="/contact?topic=eyewear">
+                Ask about spectacles
+                <Icon name="arrow-up-right" size={15} />
+              </a>
+              <a class="link-arrow" href="/eyewear">Explore eyewear <Icon name="arrow-right" size={15} /></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-block" id="workshop">
+          <div class="service-block__head">
+            <p class="service-block__num">03</p>
+            <h2>Optical workshop</h2>
+          </div>
+          <div class="service-block__body">
+            <p class="lede">
+              The workshop is where spectacles are made and lenses are fitted to
+              frames. It is the practical side of the practice — and part of why
+              Optsam calls itself an eye care and optical workshop store.
+            </p>
+            <p>
+              Optsam’s own materials describe a workshop for making all kinds of
+              spectacles. Frame and lens availability changes, and the practice does
+              not publish an online catalogue or price list.
+            </p>
+            <p>
+              Ask about current options, expected turnaround and what can be done
+              with an existing pair of spectacles when you enquire.
+            </p>
+            <div class="service-block__actions">
+              <a class="btn btn--primary btn--sm" href="/contact?topic=workshop">
+                Ask about the workshop
+                <Icon name="arrow-up-right" size={15} />
+              </a>
+            </div>
+          </div>
+          <figure class="service-block__figure">
+            <div class="figure--frame service-block__wide">
+              <Image
+                src={workshopLens}
+                alt="A person holding a spectacle lens up to the light at an optical workshop bench."
+                widths={[460, 750]}
+                sizes="(max-width: 900px) 92vw, 34vw"
+                quality={86}
+              />
+            </div>
+            <figcaption>Lens handling at the Optsam optical workshop, published in 2021.</figcaption>
+          </figure>
+        </article>
+
+        <article class="service-block" id="contact-lenses">
+          <div class="service-block__head">
+            <p class="service-block__num">04</p>
+            <h2>Contact lenses</h2>
+          </div>
+          <div class="service-block__body">
+            <p class="lede">
+              Contact lenses are a different way of correcting vision — and they
+              need a proper fitting, not just a prescription.
+            </p>
+            <p>
+              Optsam lists contact-lens fitting and supply among its services,
+              including cosmetic and therapeutic lenses. Ask about the lens types
+              currently available and whether contact lenses are suitable for your
+              eyes.
+            </p>
+            <p>
+              If you already wear contact lenses, bring your current lenses and
+              cleaning solution details to your appointment.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-block" id="referral">
+          <div class="service-block__head">
+            <p class="service-block__num">05</p>
+            <h2>Referral &amp; eye health</h2>
+          </div>
+          <div class="service-block__body">
+            <p class="lede">
+              Primary eye care has limits. Knowing them is part of good care.
+            </p>
+            <p>
+              When a condition needs ophthalmology, Optsam refers patients to an eye
+              specialist. A referral is not a failure of the examination; it is the
+              right next step when a problem needs a different kind of expertise.
+            </p>
+            <p>
+              If you are unsure whether your problem is urgent, call and ask. If it
+              is sudden or severe, do not wait for an appointment — go to the
+              nearest hospital or emergency service.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-block" id="guidance">
+          <div class="service-block__head">
+            <p class="service-block__num">06</p>
+            <h2>Eye-health guidance</h2>
+          </div>
+          <div class="service-block__body">
+            <p class="lede">
+              Part of Optsam’s work has always been explanation: helping people
+              understand what is happening with their eyes and when to seek care.
+            </p>
+            <p>
+              That has included community screening, school visits, training for
+              other health workers, and public education in English and Kiswahili.
+              The aim is not to turn a consultation into a lecture, but to leave
+              with a clearer understanding of your own sight.
+            </p>
+            <p>
+              Bring your questions. Ask what was found, what it means, and what
+              should happen next.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <section class="process section section--paper2" aria-labelledby="process-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="section-index">The visit</p>
+          <h2 id="process-heading">From enquiry<br /><em>to fitting.</em></h2>
+        </div>
+        <p class="lede reveal" data-delay="1">
+          A simple path — with the practical details confirmed before you travel.
+        </p>
+      </div>
+
+      <ol class="process__list">
+        <li class="reveal">
+          <span>01</span>
+          <h3>Enquire</h3>
+          <p>Call, email or send the enquiry form. Say what you need and whether you already wear spectacles or contact lenses.</p>
+        </li>
+        <li class="reveal" data-delay="1">
+          <span>02</span>
+          <h3>Confirm</h3>
+          <p>Confirm availability, the current services offered and any costs before you travel. Opening hours are not published online.</p>
+        </li>
+        <li class="reveal" data-delay="2">
+          <span>03</span>
+          <h3>Examination</h3>
+          <p>Have your eyesight and eye health assessed, and talk through what the results mean for you.</p>
+        </li>
+        <li class="reveal" data-delay="3">
+          <span>04</span>
+          <h3>Prescription or next step</h3>
+          <p>If you need spectacles, discuss lenses and frames. If you need specialist care, ask for a referral.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="safety section">
+    <div class="wrap safety__grid">
+      <div class="reveal">
+        <p class="eyebrow">When not to wait</p>
+        <h2>Some symptoms need <em>urgent care.</em></h2>
+      </div>
+      <div class="safety__body reveal" data-delay="1">
+        <p>
+          Go to the nearest hospital or emergency service immediately if you have:
+        </p>
+        <ul>
+          <li>a sudden loss or sudden change in vision;</li>
+          <li>severe eye pain, or a painful red eye;</li>
+          <li>a serious eye injury or a chemical splash;</li>
+          <li>new flashes of light or a sudden increase in floaters;</li>
+          <li>double vision that has just started.</li>
+        </ul>
+        <p class="safety__note">
+          This website provides general information, not medical advice or a
+          diagnosis. Optsam does not advertise an emergency service.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq section section--paper2" aria-labelledby="faq-heading">
+    <div class="wrap faq__grid">
+      <div class="reveal">
+        <p class="section-index">Practical questions</p>
+        <h2 id="faq-heading">A few things<br /><em>worth asking.</em></h2>
+        <p class="faq__note">
+          If your question is not here, call or email. It is better to confirm than
+          to travel on an assumption.
+        </p>
+      </div>
+      <div class="faq__list reveal" data-delay="1">
+        <details>
+          <summary>Do I need an appointment?</summary>
+          <p>
+            Optsam’s service flyer advertises appointment scheduling. Call to
+            arrange a time — current availability is not published online.
+          </p>
+        </details>
+        <details>
+          <summary>How much does an eye examination or pair of spectacles cost?</summary>
+          <p>
+            Prices are not published on Optsam’s website or flyers. Please ask when
+            you call or email, and confirm the cost before you commit to anything.
+          </p>
+        </details>
+        <details>
+          <summary>Can Optsam make a new pair from my existing prescription?</summary>
+          <p>
+            The workshop makes and fits spectacles. Ask about the current options and
+            what information is needed when you enquire.
+          </p>
+        </details>
+        <details>
+          <summary>Can children be seen?</summary>
+          <p>
+            Optsam’s community work has included school eye screening. Call to ask
+            about appointments for children and anything you should bring.
+          </p>
+        </details>
+        <details>
+          <summary>What if I need specialist care?</summary>
+          <p>
+            Optsam refers patients to an ophthalmologist when specialist care is
+            needed. If your symptoms are sudden or severe, go directly to a hospital
+            rather than waiting for an appointment.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap section--tight">
+    <AvailabilityNote />
+  </div>
+
+  <CtaBand />
+</Base>
+
+<script>
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-scrollspy]'));
+  const sections = links
+    .map((link) => document.querySelector<HTMLElement>(link.hash))
+    .filter((section): section is HTMLElement => Boolean(section));
+
+  if (sections.length && 'IntersectionObserver' in window) {
+    const setCurrent = (id: string) => {
+      links.forEach((link) => {
+        if (link.hash === `#${id}`) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setCurrent(visible.target.id);
+      },
+      { rootMargin: '-20% 0px -55% 0px', threshold: [0, 0.2, 0.5, 1] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>
+
+<style>
+  .service-intro {
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .service-intro__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.38fr) minmax(0, 1.1fr) minmax(0, 0.52fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .service-intro__statement {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 32ch;
+  }
+
+  .service-intro__statement em {
+    color: var(--teal-deep);
+  }
+
+  .service-intro__note {
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 34ch;
+  }
+
+  .service-layout {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.28fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .service-nav {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    align-self: start;
+  }
+
+  .service-nav__label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-bottom: 1rem;
+  }
+
+  .service-nav ul {
+    border-top: 1px solid var(--line);
+  }
+
+  .service-nav li {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .service-nav a {
+    display: grid;
+    grid-template-columns: 1.9rem minmax(0, 1fr);
+    gap: 0.4rem;
+    padding-block: 0.65rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 180ms var(--ease);
+  }
+
+  .service-nav a span {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--brass);
+    padding-top: 0.2rem;
+  }
+
+  .service-nav a:hover,
+  .service-nav a[aria-current='true'] {
+    color: var(--ink);
+  }
+
+  .service-nav a[aria-current='true'] {
+    font-weight: 650;
+  }
+
+  .service-nav__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.4rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--teal-deep);
+    text-decoration: none;
+  }
+
+  .service-content {
+    min-width: 0;
+  }
+
+  .service-block {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.55fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    padding-block: clamp(2.5rem, 4.5vw, 4rem);
+    border-top: 1px solid var(--line);
+    scroll-margin-top: calc(var(--header-h) + 2rem);
+  }
+
+  .service-block:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .service-block__head {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: start;
+    margin-bottom: 0.4rem;
+  }
+
+  .service-block__num {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+    padding-top: 0.55rem;
+  }
+
+  .service-block h2 {
+    font-size: clamp(2rem, 3.6vw, 3rem);
+  }
+
+  .service-block__body > p {
+    max-width: 57ch;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .service-block__body > p + p {
+    margin-top: 0.9rem;
+  }
+
+  .service-block__body .lede {
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 0.9rem;
+  }
+
+  .service-block__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem 1.2rem;
+    margin-top: 1.4rem;
+  }
+
+  .service-block__figure {
+    align-self: start;
+    margin-top: 0.6rem;
+  }
+
+  .service-block__figure .figure--frame {
+    aspect-ratio: 4 / 4.5;
+    overflow: hidden;
+  }
+
+  .service-block__figure .service-block__wide {
+    aspect-ratio: 4 / 3.2;
+  }
+
+  .service-block__figure :global(img) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  /* Process --------------------------------------------------------------- */
+
+  .process__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process__list li {
+    padding: 1.5rem clamp(1rem, 2vw, 1.8rem);
+    border-left: 1px solid var(--line);
+  }
+
+  .process__list li:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .process__list span {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+  }
+
+  .process__list h3 {
+    margin-top: 0.55rem;
+    font-size: 1.4rem;
+  }
+
+  .process__list p {
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  /* Safety ---------------------------------------------------------------- */
+
+  .safety__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+  }
+
+  .safety h2 {
+    margin-top: 1.1rem;
+    max-width: 11ch;
+  }
+
+  .safety__body > p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 56ch;
+  }
+
+  .safety__body ul {
+    display: grid;
+    gap: 0.4rem;
+    margin: 1rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .safety__body li {
+    position: relative;
+    padding: 0.55rem 0 0.55rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.84rem;
+    color: var(--text);
+  }
+
+  .safety__body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    inline-size: 0.35rem;
+    block-size: 0.35rem;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .safety__note {
+    font-size: 0.72rem !important;
+    line-height: 1.6 !important;
+    color: var(--quiet) !important;
+    margin-top: 1.1rem;
+  }
+
+  /* FAQ ------------------------------------------------------------------- */
+
+  .faq__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .faq h2 {
+    margin-top: 1rem;
+  }
+
+  .faq__note {
+    margin-top: 1.4rem;
+    max-width: 30ch;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .faq__list {
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .faq details {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq summary {
+    position: relative;
+    padding: 1.1rem 2rem 1.1rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.92rem;
+    font-weight: 650;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq summary::after {
+    content: '+';
+    position: absolute;
+    right: 0.2rem;
+    top: 50%;
+    translate: 0 -50%;
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--teal-deep);
+    transition: transform 200ms var(--ease);
+  }
+
+  .faq details[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq details p {
+    max-width: 58ch;
+    padding: 0 0 1.15rem;
+    font-size: 0.84rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  /* Responsive ------------------------------------------------------------ */
+
+  @media (max-width: 1020px) {
+    .service-intro__inner {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .service-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .service-nav {
+      position: static;
+    }
+
+    .service-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      border-top: 0;
+    }
+
+    .service-nav li {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .service-nav a {
+      grid-template-columns: auto;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.72rem;
+    }
+
+    .service-nav a span {
+      display: none;
+    }
+
+    .service-nav__cta {
+      display: none;
+    }
+
+    .process__list {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .process__list li:nth-child(3) {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .process__list li:nth-child(n + 3) {
+      border-top: 1px solid var(--line);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .service-block {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .service-block__figure {
+      max-width: 22rem;
+      margin-top: 0.5rem;
+    }
+
+    .service-block__figure .figure--frame {
+      aspect-ratio: 4 / 3.4;
+    }
+
+    .process__list {
+      grid-template-columns: 1fr;
+    }
+
+    .process__list li,
+    .process__list li:nth-child(3) {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+      padding-inline: 0;
+    }
+
+    .process__list li:first-child {
+      border-top: 0;
+    }
+
+    .safety__grid,
+    .faq__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

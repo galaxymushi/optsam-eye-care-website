@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
 
-// The final domain has not been confirmed by the business owner.
-// Set `site` here once a domain is chosen so canonical URLs and the
-// sitemap can be generated without inventing an address.
+// Hosted on GitHub Pages as a project site after the repository was
+// renamed from `galaxymushizo-netizen.github.io` to
+// `optsam-eye-care-website`. `base` must stay in sync with the repo name.
 export default defineConfig({
+  site: 'https://galaxymushizo-netizen.github.io',
+  base: '/optsam-eye-care-website/',
   output: 'static',
   compressHTML: true,
   build: {

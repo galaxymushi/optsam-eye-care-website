@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
-import { nav, site } from '../data/site';
+import { base, nav, site } from '../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -15,7 +15,7 @@ const year = new Date().getFullYear();
           Primary eye care and an optical workshop in Mbagala, Dar es Salaam.
           Founded by Optometrist J.M. Samwel.
         </p>
-        <a class="link-arrow" href="/contact">
+        <a class="link-arrow" href={`${base}/contact`}>
           Talk to Optsam
           <Icon name="arrow-right" size={16} />
         </a>
@@ -27,8 +27,8 @@ const year = new Date().getFullYear();
           {nav.map((item) => (
             <li><a href={item.href}>{item.label}</a></li>
           ))}
-          <li><a href="/sources">Sources &amp; photo credits</a></li>
-          <li><a href="/privacy">Privacy</a></li>
+          <li><a href={`${base}/sources`}>Sources &amp; photo credits</a></li>
+          <li><a href={`${base}/privacy`}>Privacy</a></li>
         </ul>
       </nav>
 
@@ -78,7 +78,7 @@ const year = new Date().getFullYear();
     <div class="site-footer__bottom">
       <p>© {year} Optsam Eye Care and Optical Workshop Store.</p>
       <p class="site-footer__meta">
-        Mbagala, Dar es Salaam · <a href="/sources">Verification record</a>
+        Mbagala, Dar es Salaam · <a href={`${base}/sources`}>Verification record</a>
       </p>
     </div>
   </div>

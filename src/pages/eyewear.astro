@@ -6,6 +6,7 @@ import Icon from '../components/Icon.astro';
 import Gallery from '../components/Gallery.astro';
 import AvailabilityNote from '../components/AvailabilityNote.astro';
 import CtaBand from '../components/CtaBand.astro';
+import { base } from '../data/site';
 
 import workshopBench from '../assets/workshop-bench.jpg';
 import workshopFrames from '../assets/workshop-frames.jpg';
@@ -117,7 +118,7 @@ const gallery = [
           Those details change, and guessing would not help you. Ask when you
           enquire and Optsam can tell you what is currently available.
         </p>
-        <a class="btn btn--primary btn--sm" href="/contact?topic=eyewear">
+        <a class="btn btn--primary btn--sm" href={`${base}/contact?topic=eyewear`}>
           Ask about eyewear
           <Icon name="arrow-up-right" size={15} />
         </a>
@@ -165,7 +166,7 @@ const gallery = [
             <span class="category-list__num">{String(index + 1).padStart(2, '0')}</span>
             <h3>{category.title}</h3>
             <p>{category.text}</p>
-            <a href="/contact?topic=eyewear" aria-label={`Ask about ${category.title.toLowerCase()}`}>
+            <a href={`${base}/contact?topic=eyewear`} aria-label={`Ask about ${category.title.toLowerCase()}`}>
               Ask
               <Icon name="arrow-up-right" size={14} />
             </a>
@@ -272,7 +273,7 @@ const gallery = [
           published it. Where the information could not be verified, it has been
           left out and noted for the owner.
         </p>
-        <a class="link-arrow" href="/sources">
+        <a class="link-arrow" href={`${base}/sources`}>
           Facts &amp; photo credits
           <Icon name="arrow-right" size={15} />
         </a>

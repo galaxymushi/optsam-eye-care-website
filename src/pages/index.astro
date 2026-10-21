@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import AvailabilityNote from '../components/AvailabilityNote.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { serviceRows, site } from '../data/site';
+import { base, serviceRows, site } from '../data/site';
 
 import founder from '../assets/founder-screening.jpg';
 import examination from '../assets/examination.jpg';
@@ -29,11 +29,11 @@ import workRotary from '../assets/work-rotary.jpg';
           prescription spectacles, and a clear next step for your sight.
         </p>
         <div class="hero__actions reveal" data-delay="2">
-          <a class="btn btn--primary" href="/contact">
+          <a class="btn btn--primary" href={`${base}/contact`}>
             Request an appointment
             <Icon name="arrow-up-right" size={16} />
           </a>
-          <a class="btn btn--ghost" href="/services">Explore services</a>
+          <a class="btn btn--ghost" href={`${base}/services`}>Explore services</a>
         </div>
         <p class="hero__phone reveal" data-delay="3">
           Prefer to talk?
@@ -62,7 +62,7 @@ import workRotary from '../assets/work-rotary.jpg';
         <span class="hero__vertical" aria-hidden="true">Kuona ni kuamini</span>
         <figcaption>
           J.M. Samwel, Optometrist, during a community screening in Ukonga.
-          <a href="/work">See the work</a>
+          <a href={`${base}/work`}>See the work</a>
         </figcaption>
       </figure>
     </div>
@@ -91,7 +91,7 @@ import workRotary from '../assets/work-rotary.jpg';
             aim is simple — understand how you see, explain what can be done, and
             make the spectacles that follow.
           </p>
-          <a class="link-arrow" href="/about">
+          <a class="link-arrow" href={`${base}/about`}>
             Read the Optsam story
             <Icon name="arrow-right" size={16} />
           </a>
@@ -190,7 +190,7 @@ import workRotary from '../assets/work-rotary.jpg';
           <li>Contact lenses</li>
         </ul>
 
-        <a class="btn btn--outline-light" href="/eyewear">
+        <a class="btn btn--outline-light" href={`${base}/eyewear`}>
           Explore eyewear &amp; workshop care
           <Icon name="arrow-up-right" size={16} />
         </a>
@@ -217,7 +217,7 @@ import workRotary from '../assets/work-rotary.jpg';
 
       <div class="work-grid">
         <figure class="work-grid__item work-grid__item--one reveal">
-          <a class="work-grid__link figure--frame" href="/work">
+          <a class="work-grid__link figure--frame" href={`${base}/work`}>
             <Image
               src={workSchool}
               alt="Pupils in uniform lined up in a school hall during an eye-health visit."
@@ -231,7 +231,7 @@ import workRotary from '../assets/work-rotary.jpg';
         </figure>
 
         <figure class="work-grid__item work-grid__item--two reveal" data-delay="1">
-          <a class="work-grid__link figure--frame" href="/work">
+          <a class="work-grid__link figure--frame" href={`${base}/work`}>
             <Image
               src={workMobile}
               alt="A mobile eye-clinic vehicle parked at a school, with pupils gathered outside."
@@ -245,7 +245,7 @@ import workRotary from '../assets/work-rotary.jpg';
         </figure>
 
         <figure class="work-grid__item work-grid__item--three reveal" data-delay="2">
-          <a class="work-grid__link figure--frame" href="/work">
+          <a class="work-grid__link figure--frame" href={`${base}/work`}>
             <Image
               src={workRotary}
               alt="A screening room with patients seated and a clinician at a desk."
@@ -262,9 +262,9 @@ import workRotary from '../assets/work-rotary.jpg';
       <div class="work-preview__foot reveal">
         <p>
           Photographs and details are drawn from Optsam’s own posts. Captions are
-          deliberately specific; see the <a href="/sources">sources and photo credits</a>.
+          deliberately specific; see the <a href={`${base}/sources`}>sources and photo credits</a>.
         </p>
-        <a class="link-arrow" href="/work">
+        <a class="link-arrow" href={`${base}/work`}>
           See our community work
           <Icon name="arrow-right" size={16} />
         </a>
@@ -322,7 +322,7 @@ import workRotary from '../assets/work-rotary.jpg';
               <p>
                 From Ukonga and Chang’ombe to Migombani Primary School, Optsam’s
                 community eye-care work is documented in its own photographs and posts.
-                <a href="/work">See the record.</a>
+                <a href={`${base}/work`}>See the record.</a>
               </p>
             </div>
           </li>

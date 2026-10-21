@@ -5,6 +5,7 @@ import Gallery from '../components/Gallery.astro';
 import Icon from '../components/Icon.astro';
 import AvailabilityNote from '../components/AvailabilityNote.astro';
 import CtaBand from '../components/CtaBand.astro';
+import { base } from '../data/site';
 
 import workSchool from '../assets/work-school.jpg';
 import workSchoolScreening from '../assets/work-school-screening.jpg';
@@ -190,7 +191,7 @@ const record = [
           Some photographs show patients, pupils and staff. They are reproduced from
           Optsam’s public posts at the owner’s request for this website. Written
           consent and formal permission should be confirmed before a public launch;
-          the <a href="/sources">sources and photo credits</a> page records the
+          the <a href={`${base}/sources`}>sources and photo credits</a> page records the
           outstanding checks.
         </p>
         <div class="careful__note">
@@ -201,7 +202,7 @@ const record = [
             independently audited Optsam statistic.
           </p>
         </div>
-        <a class="link-arrow" href="/sources">
+        <a class="link-arrow" href={`${base}/sources`}>
           Open the verification record
           <Icon name="arrow-right" size={15} />
         </a>

@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import AvailabilityNote from '../components/AvailabilityNote.astro';
 import CtaBand from '../components/CtaBand.astro';
+import { base } from '../data/site';
 
 import examination from '../assets/examination.jpg';
 import workshopLens from '../assets/workshop-lens.jpg';
@@ -60,7 +61,7 @@ const contents = [
             </li>
           ))}
         </ul>
-        <a class="service-nav__cta" href="/contact">
+        <a class="service-nav__cta" href={`${base}/contact`}>
           Request an appointment
           <Icon name="arrow-up-right" size={15} />
         </a>
@@ -90,11 +91,11 @@ const contents = [
               or any eye symptoms you have noticed.
             </p>
             <div class="service-block__actions">
-              <a class="btn btn--primary btn--sm" href="/contact?topic=eye-exam">
+              <a class="btn btn--primary btn--sm" href={`${base}/contact?topic=eye-exam`}>
                 Enquire about an examination
                 <Icon name="arrow-up-right" size={15} />
               </a>
-              <a class="link-arrow" href="/work">See community screening work <Icon name="arrow-right" size={15} /></a>
+              <a class="link-arrow" href={`${base}/work`}>See community screening work <Icon name="arrow-right" size={15} /></a>
             </div>
           </div>
           <figure class="service-block__figure">
@@ -133,11 +134,11 @@ const contents = [
               currently available before you choose.
             </p>
             <div class="service-block__actions">
-              <a class="btn btn--primary btn--sm" href="/contact?topic=eyewear">
+              <a class="btn btn--primary btn--sm" href={`${base}/contact?topic=eyewear`}>
                 Ask about spectacles
                 <Icon name="arrow-up-right" size={15} />
               </a>
-              <a class="link-arrow" href="/eyewear">Explore eyewear <Icon name="arrow-right" size={15} /></a>
+              <a class="link-arrow" href={`${base}/eyewear`}>Explore eyewear <Icon name="arrow-right" size={15} /></a>
             </div>
           </div>
         </article>
@@ -163,7 +164,7 @@ const contents = [
               with an existing pair of spectacles when you enquire.
             </p>
             <div class="service-block__actions">
-              <a class="btn btn--primary btn--sm" href="/contact?topic=workshop">
+              <a class="btn btn--primary btn--sm" href={`${base}/contact?topic=workshop`}>
                 Ask about the workshop
                 <Icon name="arrow-up-right" size={15} />
               </a>

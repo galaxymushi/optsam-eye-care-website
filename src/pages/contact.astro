@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import ContactForm from '../components/ContactForm.astro';
 import AvailabilityNote from '../components/AvailabilityNote.astro';
-import { site } from '../data/site';
+import { base, site } from '../data/site';
 
 import office from '../assets/office.jpg';
 ---
@@ -167,7 +167,7 @@ import office from '../assets/office.jpg';
         <p>
           Please do not send medical records, test results or other sensitive health
           details through the form. For anything urgent, go to the nearest hospital
-          or emergency service. Read the <a href="/privacy">privacy note</a>.
+          or emergency service. Read the <a href={`${base}/privacy`}>privacy note</a>.
         </p>
       </div>
     </div>

@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { site } from '../data/site';
+import { base, site } from '../data/site';
 ---
 
 <div class="enquiry-wrap">
@@ -76,7 +76,7 @@ import { site } from '../data/site';
       <input type="checkbox" id="consent" name="consent" required data-label="your consent" />
       <span>
         I agree that Optsam may use these details to reply to my enquiry. See the
-        <a href="/privacy">privacy note</a>.
+        <a href={`${base}/privacy`}>privacy note</a>.
       </span>
     </label>
     <p class="field__error" id="consent-error" data-error-for="consent" hidden></p>

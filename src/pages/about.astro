@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import AvailabilityNote from '../components/AvailabilityNote.astro';
 import CtaBand from '../components/CtaBand.astro';
+import { base } from '../data/site';
 
 import founder from '../assets/founder-screening.jpg';
 import flyerBrand from '../assets/flyer-brand.jpg';
@@ -146,7 +147,7 @@ const timeline = [
         <p class="founder__source">
           These details are as published in Optsam’s professional biography and
           Blogger profile. The qualifications have not been independently verified
-          by this website. <a href="/sources">See the verification record.</a>
+          by this website. <a href={`${base}/sources`}>See the verification record.</a>
         </p>
       </div>
 

@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { site } from '../data/site';
+import { base, site } from '../data/site';
 
 interface Props {
   title?: string;
@@ -26,7 +26,7 @@ const {
           <Icon name="phone" size={17} />
           {site.phoneDisplay}
         </a>
-        <a class="btn btn--outline-light" href="/contact">
+        <a class="btn btn--outline-light" href={`${base}/contact`}>
           Send an enquiry
           <Icon name="arrow-up-right" size={16} />
         </a>

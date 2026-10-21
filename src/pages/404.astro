@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import { site } from '../data/site';
+import { base, site } from '../data/site';
 ---
 
 <Base
@@ -19,11 +19,11 @@ import { site } from '../data/site';
           may be incomplete.
         </p>
         <div class="not-found__actions">
-          <a class="btn btn--primary" href="/">
+          <a class="btn btn--primary" href={`${base}/`}>
             Back to Optsam
             <Icon name="arrow-right" size={16} />
           </a>
-          <a class="btn btn--ghost" href="/contact">Contact us</a>
+          <a class="btn btn--ghost" href={`${base}/contact`}>Contact us</a>
         </div>
         <p class="not-found__call">
           Or call <a href={site.phoneHref}>{site.phoneDisplay}</a>

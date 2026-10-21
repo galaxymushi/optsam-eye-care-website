@@ -1,3 +1,7 @@
+// GitHub Pages project-site base. Must stay in sync with `base` in astro.config.mjs.
+// `import.meta.env.BASE_URL` includes a trailing slash, so strip it here.
+export const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
+
 export const site = {
   name: 'Optsam Eye Care and Optical Workshop Store',
   shortName: 'Optsam',
@@ -35,43 +39,43 @@ export const site = {
 } as const;
 
 export const nav = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Eyewear', href: '/eyewear' },
-  { label: 'Our work', href: '/work' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: `${base}/` },
+  { label: 'About', href: `${base}/about` },
+  { label: 'Services', href: `${base}/services` },
+  { label: 'Eyewear', href: `${base}/eyewear` },
+  { label: 'Our work', href: `${base}/work` },
+  { label: 'Contact', href: `${base}/contact` },
 ] as const;
 
 export const serviceRows = [
   {
     number: '01',
     title: 'Eye examinations',
-    href: '/services#examinations',
+    href: `${base}/services#examinations`,
     text: 'Vision and eyesight assessment with an optometrist, with a clear explanation of what the results mean and what to do next.',
   },
   {
     number: '02',
     title: 'Prescription spectacles',
-    href: '/services#spectacles',
+    href: `${base}/services#spectacles`,
     text: 'Corrective lenses prescribed and dispensed for your eyes, with frames selected and measured for comfort.',
   },
   {
     number: '03',
     title: 'Optical workshop',
-    href: '/eyewear',
+    href: `${base}/eyewear`,
     text: 'A workshop for making and fitting spectacles — the practical side of turning a prescription into a pair you can wear.',
   },
   {
     number: '04',
     title: 'Contact lenses',
-    href: '/services#contact-lenses',
+    href: `${base}/services#contact-lenses`,
     text: 'Contact-lens fitting and supply, including the lens types Optsam lists as available.',
   },
   {
     number: '05',
     title: 'Referral & eye health',
-    href: '/services#referral',
+    href: `${base}/services#referral`,
     text: 'When a condition needs specialist care, Optsam refers patients to an ophthalmologist rather than stretching the limits of primary eye care.',
   },
 ] as const;

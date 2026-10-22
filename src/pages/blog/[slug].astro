@@ -1,0 +1,234 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Icon from '../../components/Icon.astro';
+import { base } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const monthNames = [
+  'Januari', 'Februari', 'Machi', 'Aprili', 'Mei', 'Juni',
+  'Julai', 'Agosti', 'Septemba', 'Oktoba', 'Novemba', 'Desemba',
+];
+
+const formatDate = (date: Date) =>
+  `${date.getUTCDate()} ${monthNames[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+---
+
+<Base title={post.data.title} description={post.data.description}>
+  <article>
+    <header class="post-hero">
+      <div class="wrap">
+        <a class="post-hero__back" href={`${base}/blog`}>
+          <Icon name="arrow-right" size={15} />
+          Makala zote
+        </a>
+        <h1 class="post-hero__title">{post.data.title}</h1>
+        <p class="post-hero__meta">
+          <span class="post-hero__author">{post.data.author}</span>
+          <span aria-hidden="true">·</span>
+          <span>{post.data.authorRole}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+        </p>
+      </div>
+    </header>
+
+    <div class="post-body">
+      <div class="wrap post-body__grid">
+        <div class="prose">
+          <Content />
+        </div>
+        <aside class="post-aside" aria-label="Kuhusu mwandishi">
+          <p class="eyebrow eyebrow--plain">Kuhusu mwandishi</p>
+          <p class="post-aside__name">{post.data.author}</p>
+          <p class="post-aside__role">{post.data.authorRole}</p>
+          <p class="post-aside__text">
+            Optsam Eye Care and Optical Workshop Store — Mianzini Street,
+            Mbagala, Dar es Salaam. Uchunguzi wa macho, miwani ya andrekebisho
+            na rufaa kwa huduma za daktari wa macho.
+          </p>
+          <a class="post-aside__link" href={`${base}/contact`}>
+            Wasiliana nasi
+            <Icon name="arrow-up-right" size={15} />
+          </a>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .post-hero {
+    padding-block: clamp(3rem, 6.5vw, 5.5rem) clamp(2.25rem, 4.5vw, 3.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .post-hero__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    color: var(--teal-deep);
+    text-decoration: none;
+  }
+
+  .post-hero__back:hover {
+    text-decoration: underline;
+  }
+
+  .post-hero__back :global(svg) {
+    transform: rotate(180deg);
+  }
+
+  .post-hero__title {
+    margin-top: 1.6rem;
+    max-width: 24ch;
+    font-size: clamp(2.3rem, 5vw, 4.1rem);
+    line-height: 1.02;
+  }
+
+  .post-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1.6rem;
+    font-size: 0.78rem;
+    color: var(--quiet);
+  }
+
+  .post-hero__author {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .post-body {
+    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .post-body__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.65fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .prose {
+    max-width: 68ch;
+    font-size: 1.02rem;
+    line-height: 1.78;
+  }
+
+  .prose :global(p) {
+    margin-top: 1.15rem;
+    color: var(--text);
+  }
+
+  .prose :global(p:first-child) {
+    margin-top: 0;
+    font-size: 1.14rem;
+    line-height: 1.7;
+  }
+
+  .prose :global(h2) {
+    margin-top: 2.4rem;
+    font-size: clamp(1.55rem, 2.4vw, 2.05rem);
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .prose :global(h2)::before {
+    content: '';
+    display: block;
+    width: 2.2rem;
+    height: 2px;
+    margin-bottom: 0.9rem;
+    background: var(--brass);
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin-top: 1.15rem;
+    padding-left: 1.3rem;
+    list-style: disc;
+  }
+
+  .prose :global(li) {
+    margin-top: 0.5rem;
+  }
+
+  .prose :global(a) {
+    color: var(--teal-deep);
+    font-weight: 550;
+  }
+
+  .prose :global(strong) {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .post-aside {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    padding: 1.75rem;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+  }
+
+  .post-aside__name {
+    margin-top: 0.9rem;
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    line-height: 1.1;
+  }
+
+  .post-aside__role {
+    margin-top: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--brass);
+  }
+
+  .post-aside__text {
+    margin-top: 0.9rem;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .post-aside__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.1rem;
+    font-size: 0.82rem;
+    font-weight: 650;
+    color: var(--teal-deep);
+    text-decoration: none;
+  }
+
+  .post-aside__link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .post-body__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .post-aside {
+      position: static;
+    }
+  }
+</style>

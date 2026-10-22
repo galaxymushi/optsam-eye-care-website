@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import AvailabilityNote from '../components/AvailabilityNote.astro';
 import CtaBand from '../components/CtaBand.astro';
+import LatestPostBanner from '../components/LatestPostBanner.astro';
 import { base, serviceRows, site } from '../data/site';
 
 import founder from '../assets/founder-screening.jpg';
@@ -19,6 +20,8 @@ import workRotary from '../assets/work-rotary.jpg';
   title="Optsam"
   description="Primary eye care and an optical workshop in Mbagala, Dar es Salaam. Eye examinations, prescription spectacles, contact lenses and referrals, founded by Optometrist J.M. Samwel."
 >
+  <LatestPostBanner />
+
   <section class="hero">
     <div class="wrap hero__grid">
       <div class="hero__copy">

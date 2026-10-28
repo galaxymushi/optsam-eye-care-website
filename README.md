@@ -2,9 +2,10 @@
 
 The official website for **Optsam**, a primary eye care clinic and optical workshop in Mbagala, Dar es Salaam, Tanzania. The site presents the clinic's services, eyewear, community outreach work and contact details, and is built to be fast, lightweight and easy to maintain.
 
-**Live site:** https://galaxymushizo-netizen.github.io/optsam-eye-care-website/
+**Live site:** https://galaxymushi.github.io/optsam-eye-care-website/
 
-> The earlier address `https://galaxymushizo-netizen.github.io/` now redirects to the address above.
+> The account was renamed from `galaxymushizo-netizen` to `galaxymushi`, so the old
+> `galaxymushizo-netizen.github.io/optsam-eye-care-website/` address no longer resolves. Always link the URL above.
 
 ## About the business
 
@@ -57,9 +58,9 @@ npm run check     # type-check with astro check
 
 The site is hosted on GitHub Pages. The production build in `dist/` is published to the `gh-pages` branch, which GitHub Pages serves at:
 
-- **Project site:** `https://galaxymushizo-netizen.github.io/optsam-eye-care-website/`
+- **Project site:** `https://galaxymushi.github.io/optsam-eye-care-website/`
 
-The repository was previously named `galaxymushizo-netizen.github.io` (a user-site). After renaming it to `optsam-eye-care-website`, the site's base path must stay in sync in `astro.config.mjs` (`base: '/optsam-eye-care-website/'`). A separate small repository now owns the old `galaxymushizo-netizen.github.io` address and redirects visitors to this site.
+The GitHub account was renamed from `galaxymushizo-netizen` to `galaxymushi`, so the Pages address follows the new username. The repository was also renamed from `galaxymushizo-netizen.github.io` (a user-site) to `optsam-eye-care-website`, so `base` must stay in sync in `astro.config.mjs` (`base: '/optsam-eye-care-website/'`).
 
 ### Manual deploy steps
 

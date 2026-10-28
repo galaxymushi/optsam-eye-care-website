@@ -1,11 +1,11 @@
 # AGENTS.md — Optsam Eye Care website
 
 Static Astro 5 site for Optsam Eye Care & Optical Workshop (Mbagala, Dar es Salaam).
-Owner: galaxymushizo-netizen. Content language: mix of English (site chrome) and Swahili (blog posts).
+Owner: galaxymushi (account renamed from galaxymushizo-netizen). Content language: mix of English (site chrome) and Swahili (blog posts).
 
 ## Live site & branches
 
-- Live: https://galaxymushizo-netizen.github.io/optsam-eye-care-website/
+- Live: https://galaxymushi.github.io/optsam-eye-care-website/
 - `main` — source code (this branch)
 - `gh-pages` — built output ONLY. GitHub Pages build_type is "legacy" with source branch `gh-pages`.
 - **There is NO CI (no GitHub Actions). Every deploy is a manual build + push to `gh-pages`.**
@@ -71,7 +71,7 @@ cd ../optsam-eye-care-website
 git worktree remove --force ../ghpages-deploy || git worktree prune
 
 # 4. Verify
-gh api repos/galaxymushizo-netizen/optsam-eye-care-website/pages/builds/latest --jq '{status, commit}'
+gh api repos/galaxymushi/optsam-eye-care-website/pages/builds/latest --jq '{status, commit}'
 ```
 
 GitHub Pages CDN may serve stale pages for up to ~10 minutes after deploy.
